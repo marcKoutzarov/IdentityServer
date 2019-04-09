@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IdentityHostSvr</name>
+    </assembly>
+    <members>
+        <member name="M:IdentityHostSvr.Controllers.LoginControler.Post(IdentityHostSvr.Controllers.LoginControler.UserCredentials)">
+            <summary>
+            Get a JWT token wirh claims
+            </summary>
+            <param name="credentials">Username and Password</param>
+            <returns>a Token</returns>
+        </member>
+        <member name="M:IdentityHostSvr.Controllers.LoginControler.RequestPasswordToken_Async(System.String,System.String,System.String,System.String)">
+            <summary>
+            Login as a USER (bob) using client 1 returns a JTW token
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
