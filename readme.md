@@ -1,4 +1,4 @@
-IDENTITY SERVER 2 .net Core
+IDENTITY SERVER 4 .net Core
 ===================================
 
 Project contains 2 sollutions. 
