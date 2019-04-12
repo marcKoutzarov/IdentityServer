@@ -8,5 +8,5 @@ Project contains 2 sollutions.
 
 Both sollutions include one test-client: requesting a referance token (RequestClientCredentialsToken) from the server and swapping it for a claim token (IntrospectionResponse) using the Api resource. 
 
-
+Sample database project (IdentityServerDB) contains the minimal schema to store all clients, claims,scopes & recources. The database minimalistic and is much smaller then the official Identity server schema.
 
