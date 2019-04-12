@@ -35,6 +35,7 @@ namespace IdentityHostSvr
             IdentityBuilder = services.AddIdentityServer()
                .AddInMemoryIdentityResources(IdentityResourcesConfig.GetIdentityResources())
                .AddInMemoryApiResources(ApiResourcesConfig .GetApis())
+               .AddInMemoryPersistedGrants()
                .AddInMemoryClients(ClientsConfig.GetClients())
                .AddTestUsers(UsersConfig.GetUsers())
                .AddDeveloperSigningCredential();

@@ -21,7 +21,7 @@ namespace IdentityHostSvr.Models
 
                     ClientSecrets ={new Secret("Client1Secret".Sha256())},  //secret for authentication (Keep this code always on the server (note)
 
-                    AccessTokenType = AccessTokenType.Jwt,   // a jwt token 
+                    AccessTokenType = AccessTokenType.Reference,   // a jwt token 
                     AlwaysSendClientClaims =true,
                     AlwaysIncludeUserClaimsInIdToken= true,
                     AllowedGrantTypes =GrantTypes.ClientCredentials,  // no interactive user, use the clientid/secret for authentication
@@ -64,7 +64,6 @@ namespace IdentityHostSvr.Models
                     {
                         new Claim(JwtClaimTypes.Name,"Alice"),
                         new Claim(JwtClaimTypes.Email, "alice@test.com"),
-                        new Claim(JwtClaimTypes.EmailVerified,"true"),
                         new Claim(JwtClaimTypes.Role,"user"),
                     }
 

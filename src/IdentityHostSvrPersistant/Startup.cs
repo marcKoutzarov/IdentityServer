@@ -37,7 +37,6 @@ namespace IdentityHostSvr
                .AddResourceStore<ResourceStore>()
                .AddClientStore<ClientStore>()
                .AddPersistedGrantStore<PersistedGrantsStore>()
-              // .AddInMemoryPersistedGrants() // need this for Introspection call testing if you do not have a DB 
                .AddTestUsers(UsersConfig.GetUsers())
                .AddDeveloperSigningCredential();
 
