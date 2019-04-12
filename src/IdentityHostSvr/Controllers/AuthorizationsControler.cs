@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityHostSvr.Controllers
 {
-    [Route("api/login")]
-    public class LoginControler : Controller
+    [Route("api/Authorizations")]
+    public class LoginControler : ControllerBase
     {
        private IDiscoveryCache _discoCache;
        private string RootUrl;

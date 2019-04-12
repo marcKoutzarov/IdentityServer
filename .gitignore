@@ -1,3 +1,6 @@
 src/.vs/
 src/TestClient/bin/
 src/TestClient/obj/
+src/IdentityHostSvrPersistant/bin/
+src/IdentityHostSvrPersistant/obj/
+src/IdentityServerDB/obj/

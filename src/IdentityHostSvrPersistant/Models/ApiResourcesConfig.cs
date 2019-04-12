@@ -14,6 +14,7 @@ namespace IdentityHostSvr.Models
 
                 new ApiResource{
 
+                    
                     Name ="api1",
                     Description ="",
                     DisplayName ="My API 1",
@@ -23,7 +24,6 @@ namespace IdentityHostSvr.Models
                         new Scope("api1.read"),
                         new Scope("api1.write"),
                         new Scope("api1.admin"),
-                        new Scope("api1.guest")
                     },
                     UserClaims ={
                         JwtClaimTypes.Name,
@@ -42,8 +42,7 @@ namespace IdentityHostSvr.Models
                         new Scope("api2.read"),
                         new Scope("api2.write"),
                         new Scope("api2.admin"),
-                        new Scope("api2.guest")
-                   },
+                    },
                     UserClaims ={
                         JwtClaimTypes.Name,
                         JwtClaimTypes.Email,

@@ -14,25 +14,22 @@ namespace IdentityHostSvr.Models
                 new Client
                 {
                     ClientId = "Client1",
-
                     ClientName ="TheClient1Name",
-
-                    Description ="",
-
+                    Description ="Client returning a Reference token",
                     ClientSecrets ={new Secret("Client1Secret".Sha256())},  //secret for authentication (Keep this code always on the server (note)
-
-                    AccessTokenType = AccessTokenType.Jwt,   // a jwt token 
+                    AccessTokenType = AccessTokenType.Reference,   // a jwt token 
                     AlwaysSendClientClaims =true,
                     AlwaysIncludeUserClaimsInIdToken= true,
                     AllowedGrantTypes =GrantTypes.ClientCredentials,  // no interactive user, use the clientid/secret for authentication
-
-                    AllowedScopes =new List<string>{
+                      AllowedScopes =new List<string>{
                       new string("api1.read"),
-                      new string("api2.write")
+                      new string( "api1.write"),
                     },
-                    AuthorizationCodeLifetime =300,
-                    IdentityTokenLifetime = 300,
 
+                    //AuthorizationCodeLifetime =20,
+                    //IdentityTokenLifetime = 20,
+                    AccessTokenLifetime = 20,   // 10 s by intention
+                    
                     Claims = new List<Claim>
                     {
                         new Claim(JwtClaimTypes.Name,"Bob"),
@@ -57,14 +54,14 @@ namespace IdentityHostSvr.Models
                     AllowedScopes =new List<string>{
                        new string("api2.read")
                     },
-                    AuthorizationCodeLifetime =300,
-                    IdentityTokenLifetime = 300,
+                   // AuthorizationCodeLifetime =300,
+                   // IdentityTokenLifetime = 300,
+                    AccessTokenLifetime = 20,   // 10 s by intention
 
                     Claims = new List<Claim>
                     {
                         new Claim(JwtClaimTypes.Name,"Alice"),
                         new Claim(JwtClaimTypes.Email, "alice@test.com"),
-                        new Claim(JwtClaimTypes.EmailVerified,"true"),
                         new Claim(JwtClaimTypes.Role,"user"),
                     }
 
