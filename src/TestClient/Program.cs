@@ -26,12 +26,15 @@ namespace TestClient
             TokenResponse tokenResponse;
             IntrospectionResponse IntroSpectionResponse;
 
-          
+
         AuthenticateClient1:
 
             //---------------------------------------------------------
             Console.WriteLine("authenicate a  Client (1) with referance token");
-            tokenResponse = RequestClientCredentialsToken_Async("Client1", "Client1Secret").Result;
+
+            //tokenResponse = RequestClientCredentialsToken_Async("Client1", "Client1Secret").Result;
+            tokenResponse = RequestPasswordToken_Async("Client1", "Client1Secret", "bob", "password").Result;
+
             if (tokenResponse.IsError)
             {
                 Console.WriteLine(tokenResponse.Error);
@@ -200,7 +203,6 @@ namespace TestClient
 
                 ClientId = clientName,
                 ClientSecret = ClientSecret,
-                // Scope = "api1",
                 UserName = userName,
                 Password = passWord
             });
