@@ -64,13 +64,14 @@
     <Build Include="Tables\Clients.sql" />
     <Build Include="Tables\Apis.sql" />
     <Build Include="Tables\ApisScopes.sql" />
-    <Build Include="Tables\ClientsClaims.sql" />
     <Build Include="Tables\ClientsScopes.sql" />
-    <Build Include="Tables\EnumScopes.sql" />
-    <Build Include="Tables\EnumRoles.sql" />
+    <Build Include="Tables\EnumApiScopes.sql" />
+    <Build Include="Tables\EnumClientRoles.sql" />
     <Build Include="Tables\EnumTokenTypes.sql" />
     <PostDeploy Include="DataSeeds\SeedEnums.sql" />
     <Build Include="Tables\Grants.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Tables\EnumUserRoles.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="IdentityServerDB.refactorlog" />

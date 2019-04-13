@@ -1,52 +1,82 @@
 ﻿
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='user' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='frontend' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('user', 'An human user.', 'init script','init script')
+           ('frontend', 'A frontend application.', 'init script','init script')
 END
-
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='admin' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='api' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('admin', 'God mode.', 'init script','init script')
+           ('api', 'An webapi application.', 'init script','init script')
 END
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='appl' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='internal' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('appl', 'An application.', 'init script','init script')
+           ('internal', 'An internal user', 'init script','init script')
 END
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='opco' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='service' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('opco', 'Operational company.', 'init script','init script')
+           ('service', 'A service application.', 'init script','init script')
 END
 
 
 
+
+
+
+
+
+BEGIN
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumUserRoles] WHERE [Role]='customer' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumUserRoles]
+           ([Role]
+           ,[Description]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('customer', 'A customer using the application', 'init script','init script')
+END
+BEGIN
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumUserRoles] WHERE [Role]='employee' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumUserRoles]
+           ([Role]
+           ,[Description]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('employee', 'A employee using the application', 'init script','init script')
+END
+BEGIN
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumUserRoles] WHERE [Role]='admin' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumUserRoles]
+           ([Role]
+           ,[Description]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('admin', 'administrator', 'init script','init script')
+END
 
 
 
@@ -68,7 +98,6 @@ INSERT INTO [IdentityServerDB].[dbo].[EnumTokenTypes]
            ('JWT', 'A JWT token.', 'init script','init script')
 END
 
-
 BEGIN
 IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumTokenTypes] WHERE [Type]='REF' )
 INSERT INTO [IdentityServerDB].[dbo].[EnumTokenTypes]
@@ -82,18 +111,9 @@ END
 
 
 
-
-
-
-
-
-
-
-
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumScopes] WHERE [Scope]='read' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumApiScopes] WHERE [Scope]='read' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumApiScopes]
            ([Scope]
            ,[Description]
            ,[CreatedBy]
@@ -102,34 +122,24 @@ INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
            ('read', 'Read permission', 'init script','init script')
 END
 
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumScopes] WHERE [Scope]='write' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumApiScopes] WHERE [Scope]='insert' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumApiScopes]
            ([Scope]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('write', 'Write permission', 'init script','init script')
+           ('insert', 'Read permission', 'init script','init script')
 END
 
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumScopes] WHERE [Scope]='aprove' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumApiScopes] WHERE [Scope]='update' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumApiScopes]
            ([Scope]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('aprove', '4 eye aproval permission', 'init script','init script')
+           ('update', 'Read permission', 'init script','init script')
 END
-
-
-
-
-
-
-
-

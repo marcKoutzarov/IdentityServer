@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using IdentityHostSvr.Models.Validators;
+using IdentityServer4.Services;
+using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using IdentityHostSvr.Models;
-using System.Reflection;
-using System.IO;
 using Swashbuckle.AspNetCore.Swagger;
-using IdentityHostSvr.Models.Stores;
+using System;
+using System.IO;
+using System.Reflection;
+using IdentityHostSvr.Stores;
+using IdentityHostSvr.Interfaces;
+using IdentityHostSvr.Interfaces.Stores;
+using IdentityHostSvr.Interfaces.Repositories;
+using IdentityHostSvr.Repositories;
 
 namespace IdentityHostSvr
 {
@@ -37,13 +37,21 @@ namespace IdentityHostSvr
                .AddResourceStore<ResourceStore>()
                .AddClientStore<ClientStore>()
                .AddPersistedGrantStore<PersistedGrantsStore>()
-               .AddTestUsers(UsersConfig.GetUsers())
+               .AddProfileService<ProfileService>()
                .AddDeveloperSigningCredential();
 
+            //Inject the Repository classes
+            services.AddTransient<IResourcesRepo, ResourceRepo>();
+            services.AddTransient<IUserRepo, UserRepo>();
+            services.AddTransient<IGrantsRepo, GrantsRepo>();
 
+           
+            //Inject the classes for the profile service
+            services.AddTransient<IUserStore, UserStore>();
+            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+            services.AddTransient<IProfileService, ProfileService>();
 
             services.AddSwaggerGen(c =>
-
             {
                 c.SwaggerDoc("v1", new Info
                 {
@@ -63,8 +71,6 @@ namespace IdentityHostSvr
                         Url = "https://www.linkedin.com/in/marckoutzarov/"
                     }
                 });
-
-
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);

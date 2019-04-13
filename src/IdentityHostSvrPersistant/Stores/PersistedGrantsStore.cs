@@ -6,14 +6,41 @@ using IdentityModel;
 using IdentityServer4.Models;
 using System.Security.Claims;
 using IdentityServer4.Stores;
+using IdentityHostSvr.Repositories.Mock;
+using IdentityHostSvr.Interfaces.Repositories;
+using IdentityHostSvr.Repositories.pocos;
 
-namespace IdentityHostSvr.Models.Stores
+namespace IdentityHostSvr.Stores
 {
     public class PersistedGrantsStore : IPersistedGrantStore
     {
+        private readonly IGrantsRepo _grantRepo; 
+
+        public PersistedGrantsStore(IGrantsRepo grantsRepo)
+        {
+           _grantRepo = grantsRepo;
+        }
+
         public Task<IEnumerable<PersistedGrant>> GetAllAsync(string subjectId)
         {
-            return Task <IEnumerable <PersistedGrant>>.FromResult(PresistentGrantsConfig.GetAll());
+           IEnumerable<PersistedGrant> result = new List<PersistedGrant>(); 
+           IEnumerable<GrantPoco> grants = _grantRepo.GetAll();
+
+           foreach (GrantPoco p in grants)
+           {
+                result.Append(new PersistedGrant {
+                    ClientId = p.ClientId,
+                    CreationTime = p.CreationTime, 
+                    Data=p.Data,
+                    Key =p.Key,
+                    Expiration = p.Expiration,
+                    SubjectId = p.SubjectId,
+                    Type =p.Type
+                });
+           }
+
+            //return Task <IEnumerable <PersistedGrant>>.FromResult(PresistentGrantsConfig.GetAll());
+            return Task<IEnumerable<PersistedGrant>>.FromResult(result);
         }
 
         public Task<PersistedGrant> GetAsync(string key)

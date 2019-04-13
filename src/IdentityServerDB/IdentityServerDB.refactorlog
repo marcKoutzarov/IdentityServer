@@ -140,4 +140,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Enabled" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="72ea43cb-f1ea-471b-8f0f-5ca29b5a4e48" ChangeDateTime="04/12/2019 13:46:32">
+    <Property Name="ElementName" Value="[dbo].[Users].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubjectId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="db212bbc-7d8f-4848-ad3e-6732499d5fba" ChangeDateTime="04/12/2019 13:53:37">
+    <Property Name="ElementName" Value="[dbo].[Users].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubjectId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e808e230-3749-4210-971d-0fc22c1ae192" ChangeDateTime="04/12/2019 14:19:27">
+    <Property Name="ElementName" Value="[dbo].[Clients].[ClientId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clients]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Client" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3c0f2bf5-227a-4979-b4d7-5671ca47533b" ChangeDateTime="04/12/2019 14:20:58">
+    <Property Name="ElementName" Value="[dbo].[Clients].[Enabled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clients]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsActive" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="45cf6016-5697-486b-a50c-ff7bff66ee6d" ChangeDateTime="04/12/2019 14:24:09">
+    <Property Name="ElementName" Value="[dbo].[Clients].[Client]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clients]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClientUserName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d68db057-5d1c-4580-bb30-03d3dbd03794" ChangeDateTime="04/12/2019 14:51:22">
+    <Property Name="ElementName" Value="[dbo].[Clients].[ClientRoleId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clients]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Role" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b924552d-55bc-4a4e-8c5e-9304f7e987e9" ChangeDateTime="04/12/2019 17:34:02">
+    <Property Name="ElementName" Value="[dbo].[ApisScopes].[ScopeEnumId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ApisScopes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Scope" />
+  </Operation>
 </Operations>

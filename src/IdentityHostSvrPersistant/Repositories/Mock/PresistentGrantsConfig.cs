@@ -8,7 +8,7 @@ using System.Security.Claims;
 using IdentityServer4.Stores;
 
 
-namespace IdentityHostSvr.Models
+namespace IdentityHostSvr.Repositories.Mock
 {
     public static class PresistentGrantsConfig
     {

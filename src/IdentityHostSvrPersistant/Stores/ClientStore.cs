@@ -6,11 +6,20 @@ using IdentityModel;
 using IdentityServer4.Models;
 using System.Security.Claims;
 using IdentityServer4.Stores;
+using IIdentityHostSvr.Repositories.Mock;
+using IdentityHostSvr.Interfaces.Repositories;
 
-namespace IdentityHostSvr.Models.Stores
+namespace IdentityHostSvr.Stores
 {
     public class ClientStore : IClientStore
     {
+        private readonly IResourcesRepo _repo;
+
+        public ClientStore(IResourcesRepo repo)
+        {
+            _repo = repo;
+        }
+
 
         /// <summary>
         /// Implement 

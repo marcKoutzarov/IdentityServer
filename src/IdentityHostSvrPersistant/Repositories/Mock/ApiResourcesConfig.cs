@@ -3,10 +3,12 @@ using IdentityServer4.Models;
 using System.Collections.Generic;
 
 
-namespace IdentityHostSvr.Models
+namespace IdentityHostSvr.Repositories.Mock
 {
     public static class ApiResourcesConfig
     {
+
+
         public static IEnumerable<ApiResource> GetApis()
         {
             return new List<ApiResource>
@@ -28,7 +30,8 @@ namespace IdentityHostSvr.Models
                     UserClaims ={
                         JwtClaimTypes.Name,
                         JwtClaimTypes.Email,
-                        JwtClaimTypes.Role
+                        JwtClaimTypes.Role,
+                        JwtClaimTypes.Subject
                     }
                 },
 
@@ -46,7 +49,8 @@ namespace IdentityHostSvr.Models
                     UserClaims ={
                         JwtClaimTypes.Name,
                         JwtClaimTypes.Email,
-                        JwtClaimTypes.Role
+                         JwtClaimTypes.Role,
+                        JwtClaimTypes.Subject
                     }
                 }
 

@@ -201,42 +201,6 @@ CREATE TABLE [dbo].[EnumTokenTypes] (
 
 
 GO
-PRINT N'Creating [dbo].[EnumRoles]...';
-
-
-GO
-CREATE TABLE [dbo].[EnumRoles] (
-    [ID]          INT            IDENTITY (1, 1) NOT NULL,
-    [Role]        NVARCHAR (40)  NOT NULL,
-    [Description] NVARCHAR (100) NOT NULL,
-    [DateCreated] DATETIME       NOT NULL,
-    [CreatedBy]   NVARCHAR (50)  NOT NULL,
-    [Updated]     DATETIME       NOT NULL,
-    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC),
-    UNIQUE NONCLUSTERED ([Role] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[EnumScopes]...';
-
-
-GO
-CREATE TABLE [dbo].[EnumScopes] (
-    [ID]          INT            IDENTITY (1, 1) NOT NULL,
-    [Scope]       NVARCHAR (40)  NOT NULL,
-    [Description] NVARCHAR (100) NOT NULL,
-    [DateCreated] DATETIME       NOT NULL,
-    [CreatedBy]   NVARCHAR (50)  NOT NULL,
-    [Updated]     DATETIME       NOT NULL,
-    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC),
-    UNIQUE NONCLUSTERED ([Scope] ASC)
-);
-
-
-GO
 PRINT N'Creating [dbo].[ClientsScopes]...';
 
 
@@ -245,42 +209,6 @@ CREATE TABLE [dbo].[ClientsScopes] (
     [ID]          INT           IDENTITY (1, 1) NOT NULL,
     [ClientID]    INT           NOT NULL,
     [ApiScopesId] INT           NOT NULL,
-    [DateCreated] DATETIME      NOT NULL,
-    [CreatedBy]   NVARCHAR (50) NOT NULL,
-    [Updated]     DATETIME      NOT NULL,
-    [UpdatedBy]   NVARCHAR (50) NOT NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[ClientsClaims]...';
-
-
-GO
-CREATE TABLE [dbo].[ClientsClaims] (
-    [ID]          INT            IDENTITY (1, 1) NOT NULL,
-    [ClientID]    INT            NOT NULL,
-    [JwtName]     NVARCHAR (255) NOT NULL,
-    [JwtEmail]    NVARCHAR (255) NOT NULL,
-    [EnumRoleId]  INT            NOT NULL,
-    [DateCreated] DATETIME       NOT NULL,
-    [CreatedBy]   NVARCHAR (50)  NOT NULL,
-    [Updated]     DATETIME       NOT NULL,
-    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[ApisScopes]...';
-
-
-GO
-CREATE TABLE [dbo].[ApisScopes] (
-    [ID]          INT           IDENTITY (1, 1) NOT NULL,
-    [ApiID]       INT           NOT NULL,
-    [ScopeEnumId] INT           NOT NULL,
     [DateCreated] DATETIME      NOT NULL,
     [CreatedBy]   NVARCHAR (50) NOT NULL,
     [Updated]     DATETIME      NOT NULL,
@@ -316,19 +244,115 @@ PRINT N'Creating [dbo].[Clients]...';
 
 GO
 CREATE TABLE [dbo].[Clients] (
-    [ID]              INT            IDENTITY (1, 1) NOT NULL,
-    [ClientId]        NVARCHAR (100) NOT NULL,
-    [Name]            NVARCHAR (100) NOT NULL,
-    [Description]     NVARCHAR (100) NOT NULL,
-    [Secret]          NVARCHAR (100) NOT NULL,
-    [Enabled]         BIT            NOT NULL,
-    [EnumTokenTypeId] INT            NOT NULL,
-    [DateCreated]     DATETIME       NOT NULL,
-    [CreatedBy]       NVARCHAR (50)  NOT NULL,
-    [Updated]         DATETIME       NOT NULL,
-    [UpdatedBy]       NVARCHAR (50)  NOT NULL,
+    [ID]                  INT            IDENTITY (1, 1) NOT NULL,
+    [ClientUserName]      NVARCHAR (100) NOT NULL,
+    [Description]         NVARCHAR (100) NOT NULL,
+    [Secret]              NVARCHAR (MAX) NOT NULL,
+    [EnumTokenTypeId]     INT            NOT NULL,
+    [AccessTokenLifetime] INT            NOT NULL,
+    [Role]                NVARCHAR (40)  NOT NULL,
+    [IsActive]            BIT            NOT NULL,
+    [DateCreated]         DATETIME       NOT NULL,
+    [CreatedBy]           NVARCHAR (50)  NOT NULL,
+    [Updated]             DATETIME       NOT NULL,
+    [UpdatedBy]           NVARCHAR (50)  NOT NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC),
-    UNIQUE NONCLUSTERED ([ClientId] ASC)
+    UNIQUE NONCLUSTERED ([ClientUserName] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[EnumClientRoles]...';
+
+
+GO
+CREATE TABLE [dbo].[EnumClientRoles] (
+    [ID]          INT            IDENTITY (1, 1) NOT NULL,
+    [Role]        NVARCHAR (40)  NOT NULL,
+    [Description] NVARCHAR (100) NOT NULL,
+    [DateCreated] DATETIME       NOT NULL,
+    [CreatedBy]   NVARCHAR (50)  NOT NULL,
+    [Updated]     DATETIME       NOT NULL,
+    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    UNIQUE NONCLUSTERED ([Role] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[EnumUserRoles]...';
+
+
+GO
+CREATE TABLE [dbo].[EnumUserRoles] (
+    [ID]          INT            IDENTITY (1, 1) NOT NULL,
+    [Role]        NVARCHAR (40)  NOT NULL,
+    [Description] NVARCHAR (100) NOT NULL,
+    [DateCreated] DATETIME       NOT NULL,
+    [CreatedBy]   NVARCHAR (50)  NOT NULL,
+    [Updated]     DATETIME       NOT NULL,
+    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    UNIQUE NONCLUSTERED ([Role] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Users]...';
+
+
+GO
+CREATE TABLE [dbo].[Users] (
+    [SubjectId]   INT            IDENTITY (1, 1) NOT NULL,
+    [Username]    NVARCHAR (100) NOT NULL,
+    [Password]    NVARCHAR (MAX) NOT NULL,
+    [GivenName]   NVARCHAR (70)  NULL,
+    [FamilyName]  NVARCHAR (70)  NULL,
+    [Role]        NVARCHAR (40)  NOT NULL,
+    [Email]       NVARCHAR (100) NOT NULL,
+    [IsActive]    BIT            NOT NULL,
+    [Salt]        NVARCHAR (MAX) NOT NULL,
+    [DateCreated] DATETIME       NOT NULL,
+    [CreatedBy]   NVARCHAR (50)  NOT NULL,
+    [Updated]     DATETIME       NOT NULL,
+    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([SubjectId] ASC),
+    UNIQUE NONCLUSTERED ([Username] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[EnumApiScopes]...';
+
+
+GO
+CREATE TABLE [dbo].[EnumApiScopes] (
+    [ID]          INT            IDENTITY (1, 1) NOT NULL,
+    [Scope]       NVARCHAR (40)  NOT NULL,
+    [Description] NVARCHAR (100) NOT NULL,
+    [DateCreated] DATETIME       NOT NULL,
+    [CreatedBy]   NVARCHAR (50)  NOT NULL,
+    [Updated]     DATETIME       NOT NULL,
+    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    UNIQUE NONCLUSTERED ([Scope] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[ApisScopes]...';
+
+
+GO
+CREATE TABLE [dbo].[ApisScopes] (
+    [ID]          INT           IDENTITY (1, 1) NOT NULL,
+    [ApiID]       INT           NOT NULL,
+    [Scope]       NVARCHAR (40) NOT NULL,
+    [DateCreated] DATETIME      NOT NULL,
+    [CreatedBy]   NVARCHAR (50) NOT NULL,
+    [Updated]     DATETIME      NOT NULL,
+    [UpdatedBy]   NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
 
@@ -378,42 +402,6 @@ ALTER TABLE [dbo].[EnumTokenTypes]
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[EnumRoles]...';
-
-
-GO
-ALTER TABLE [dbo].[EnumRoles]
-    ADD DEFAULT Getdate() FOR [DateCreated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[EnumRoles]...';
-
-
-GO
-ALTER TABLE [dbo].[EnumRoles]
-    ADD DEFAULT Getdate() FOR [Updated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[EnumScopes]...';
-
-
-GO
-ALTER TABLE [dbo].[EnumScopes]
-    ADD DEFAULT Getdate() FOR [DateCreated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[EnumScopes]...';
-
-
-GO
-ALTER TABLE [dbo].[EnumScopes]
-    ADD DEFAULT Getdate() FOR [Updated];
-
-
-GO
 PRINT N'Creating unnamed constraint on [dbo].[ClientsScopes]...';
 
 
@@ -428,42 +416,6 @@ PRINT N'Creating unnamed constraint on [dbo].[ClientsScopes]...';
 
 GO
 ALTER TABLE [dbo].[ClientsScopes]
-    ADD DEFAULT Getdate() FOR [Updated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[ClientsClaims]...';
-
-
-GO
-ALTER TABLE [dbo].[ClientsClaims]
-    ADD DEFAULT Getdate() FOR [DateCreated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[ClientsClaims]...';
-
-
-GO
-ALTER TABLE [dbo].[ClientsClaims]
-    ADD DEFAULT Getdate() FOR [Updated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
-
-
-GO
-ALTER TABLE [dbo].[ApisScopes]
-    ADD DEFAULT Getdate() FOR [DateCreated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
-
-
-GO
-ALTER TABLE [dbo].[ApisScopes]
     ADD DEFAULT Getdate() FOR [Updated];
 
 
@@ -500,6 +452,15 @@ PRINT N'Creating unnamed constraint on [dbo].[Clients]...';
 
 GO
 ALTER TABLE [dbo].[Clients]
+    ADD DEFAULT 900 FOR [AccessTokenLifetime];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Clients]...';
+
+
+GO
+ALTER TABLE [dbo].[Clients]
     ADD DEFAULT Getdate() FOR [DateCreated];
 
 
@@ -513,6 +474,114 @@ ALTER TABLE [dbo].[Clients]
 
 
 GO
+PRINT N'Creating unnamed constraint on [dbo].[EnumClientRoles]...';
+
+
+GO
+ALTER TABLE [dbo].[EnumClientRoles]
+    ADD DEFAULT Getdate() FOR [DateCreated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[EnumClientRoles]...';
+
+
+GO
+ALTER TABLE [dbo].[EnumClientRoles]
+    ADD DEFAULT Getdate() FOR [Updated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[EnumUserRoles]...';
+
+
+GO
+ALTER TABLE [dbo].[EnumUserRoles]
+    ADD DEFAULT Getdate() FOR [DateCreated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[EnumUserRoles]...';
+
+
+GO
+ALTER TABLE [dbo].[EnumUserRoles]
+    ADD DEFAULT Getdate() FOR [Updated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Users]...';
+
+
+GO
+ALTER TABLE [dbo].[Users]
+    ADD DEFAULT 1 FOR [IsActive];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Users]...';
+
+
+GO
+ALTER TABLE [dbo].[Users]
+    ADD DEFAULT 'defaultSalt' FOR [Salt];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Users]...';
+
+
+GO
+ALTER TABLE [dbo].[Users]
+    ADD DEFAULT Getdate() FOR [DateCreated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Users]...';
+
+
+GO
+ALTER TABLE [dbo].[Users]
+    ADD DEFAULT Getdate() FOR [Updated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[EnumApiScopes]...';
+
+
+GO
+ALTER TABLE [dbo].[EnumApiScopes]
+    ADD DEFAULT Getdate() FOR [DateCreated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[EnumApiScopes]...';
+
+
+GO
+ALTER TABLE [dbo].[EnumApiScopes]
+    ADD DEFAULT Getdate() FOR [Updated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
+
+
+GO
+ALTER TABLE [dbo].[ApisScopes]
+    ADD DEFAULT Getdate() FOR [DateCreated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
+
+
+GO
+ALTER TABLE [dbo].[ApisScopes]
+    ADD DEFAULT Getdate() FOR [Updated];
+
+
+GO
 PRINT N'Creating [dbo].[FK_ClientsScopes_Clients]...';
 
 
@@ -522,12 +591,30 @@ ALTER TABLE [dbo].[ClientsScopes]
 
 
 GO
-PRINT N'Creating [dbo].[FK_ClientsClaims_Clients]...';
+PRINT N'Creating [dbo].[FK_Clients_EnumTokenTypes]...';
 
 
 GO
-ALTER TABLE [dbo].[ClientsClaims]
-    ADD CONSTRAINT [FK_ClientsClaims_Clients] FOREIGN KEY ([ClientID]) REFERENCES [dbo].[Clients] ([ID]);
+ALTER TABLE [dbo].[Clients]
+    ADD CONSTRAINT [FK_Clients_EnumTokenTypes] FOREIGN KEY ([EnumTokenTypeId]) REFERENCES [dbo].[EnumTokenTypes] ([ID]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Clients_EnumClientRoles]...';
+
+
+GO
+ALTER TABLE [dbo].[Clients]
+    ADD CONSTRAINT [FK_Clients_EnumClientRoles] FOREIGN KEY ([Role]) REFERENCES [dbo].[EnumClientRoles] ([Role]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Clients_EnumUsertRoles]...';
+
+
+GO
+ALTER TABLE [dbo].[Users]
+    ADD CONSTRAINT [FK_Clients_EnumUsertRoles] FOREIGN KEY ([Role]) REFERENCES [dbo].[EnumUserRoles] ([Role]);
 
 
 GO
@@ -545,16 +632,7 @@ PRINT N'Creating [dbo].[FK_ApisScopes_EnumScopes]...';
 
 GO
 ALTER TABLE [dbo].[ApisScopes]
-    ADD CONSTRAINT [FK_ApisScopes_EnumScopes] FOREIGN KEY ([ScopeEnumId]) REFERENCES [dbo].[EnumScopes] ([ID]);
-
-
-GO
-PRINT N'Creating [dbo].[FK_Clients_EnumTokenTypes]...';
-
-
-GO
-ALTER TABLE [dbo].[Clients]
-    ADD CONSTRAINT [FK_Clients_EnumTokenTypes] FOREIGN KEY ([EnumTokenTypeId]) REFERENCES [dbo].[EnumTokenTypes] ([ID]);
+    ADD CONSTRAINT [FK_ApisScopes_EnumScopes] FOREIGN KEY ([Scope]) REFERENCES [dbo].[EnumApiScopes] ([Scope]);
 
 
 GO
@@ -606,59 +684,103 @@ IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey
 INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('cdff58ba-6ccc-4b99-b120-3c23d58dc140')
 IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '59697f96-7172-4726-949b-97bbe5cfeb1a')
 INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('59697f96-7172-4726-949b-97bbe5cfeb1a')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '72ea43cb-f1ea-471b-8f0f-5ca29b5a4e48')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('72ea43cb-f1ea-471b-8f0f-5ca29b5a4e48')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'db212bbc-7d8f-4848-ad3e-6732499d5fba')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('db212bbc-7d8f-4848-ad3e-6732499d5fba')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'e808e230-3749-4210-971d-0fc22c1ae192')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('e808e230-3749-4210-971d-0fc22c1ae192')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '3c0f2bf5-227a-4979-b4d7-5671ca47533b')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('3c0f2bf5-227a-4979-b4d7-5671ca47533b')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '45cf6016-5697-486b-a50c-ff7bff66ee6d')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('45cf6016-5697-486b-a50c-ff7bff66ee6d')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'd68db057-5d1c-4580-bb30-03d3dbd03794')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('d68db057-5d1c-4580-bb30-03d3dbd03794')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'b924552d-55bc-4a4e-8c5e-9304f7e987e9')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('b924552d-55bc-4a4e-8c5e-9304f7e987e9')
 
 GO
 
 GO
 
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='user' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='frontend' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('user', 'An human user.', 'init script','init script')
+           ('frontend', 'A frontend application.', 'init script','init script')
 END
-
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='admin' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='api' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('admin', 'God mode.', 'init script','init script')
+           ('api', 'An webapi application.', 'init script','init script')
 END
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='appl' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='internal' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('appl', 'An application.', 'init script','init script')
+           ('internal', 'An internal user', 'init script','init script')
 END
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumRoles] WHERE [Role]='opco' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumRoles]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumClientRoles] WHERE [Role]='service' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumClientRoles]
            ([Role]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('opco', 'Operational company.', 'init script','init script')
+           ('service', 'A service application.', 'init script','init script')
 END
 
 
 
+
+
+
+
+
+BEGIN
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumUserRoles] WHERE [Role]='customer' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumUserRoles]
+           ([Role]
+           ,[Description]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('customer', 'A customer using the application', 'init script','init script')
+END
+BEGIN
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumUserRoles] WHERE [Role]='employee' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumUserRoles]
+           ([Role]
+           ,[Description]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('employee', 'A employee using the application', 'init script','init script')
+END
+BEGIN
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumUserRoles] WHERE [Role]='admin' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumUserRoles]
+           ([Role]
+           ,[Description]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('admin', 'administrator', 'init script','init script')
+END
 
 
 
@@ -680,7 +802,6 @@ INSERT INTO [IdentityServerDB].[dbo].[EnumTokenTypes]
            ('JWT', 'A JWT token.', 'init script','init script')
 END
 
-
 BEGIN
 IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumTokenTypes] WHERE [Type]='REF' )
 INSERT INTO [IdentityServerDB].[dbo].[EnumTokenTypes]
@@ -694,18 +815,9 @@ END
 
 
 
-
-
-
-
-
-
-
-
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumScopes] WHERE [Scope]='read' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumApiScopes] WHERE [Scope]='read' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumApiScopes]
            ([Scope]
            ,[Description]
            ,[CreatedBy]
@@ -714,37 +826,27 @@ INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
            ('read', 'Read permission', 'init script','init script')
 END
 
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumScopes] WHERE [Scope]='write' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumApiScopes] WHERE [Scope]='insert' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumApiScopes]
            ([Scope]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('write', 'Write permission', 'init script','init script')
+           ('insert', 'Read permission', 'init script','init script')
 END
 
-
 BEGIN
-IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumScopes] WHERE [Scope]='aprove' )
-INSERT INTO [IdentityServerDB].[dbo].[EnumScopes]
+IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumApiScopes] WHERE [Scope]='update' )
+INSERT INTO [IdentityServerDB].[dbo].[EnumApiScopes]
            ([Scope]
            ,[Description]
            ,[CreatedBy]
            ,[UpdatedBy])
      VALUES
-           ('aprove', '4 eye aproval permission', 'init script','init script')
+           ('update', 'Read permission', 'init script','init script')
 END
-
-
-
-
-
-
-
-
 GO
 
 GO

@@ -3,7 +3,7 @@ using IdentityServer4.Models;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace IdentityHostSvr.Models
+namespace IIdentityHostSvr.Repositories.Mock
 {
     public static class ClientsConfig
     {
@@ -20,24 +20,19 @@ namespace IdentityHostSvr.Models
                     AccessTokenType = AccessTokenType.Reference,   // a jwt token 
                     AlwaysSendClientClaims =true,
                     AlwaysIncludeUserClaimsInIdToken= true,
-                    AllowedGrantTypes =GrantTypes.ClientCredentials,  // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes =GrantTypes.ResourceOwnerPasswordAndClientCredentials,  // no interactive user, use the clientid/secret for authentication
                       AllowedScopes =new List<string>{
                       new string("api1.read"),
                       new string( "api1.write"),
                     },
 
-                    //AuthorizationCodeLifetime =20,
-                    //IdentityTokenLifetime = 20,
                     AccessTokenLifetime = 20,   // 10 s by intention
                     
                     Claims = new List<Claim>
-                    {
-                        new Claim(JwtClaimTypes.Name,"Bob"),
-                        new Claim(JwtClaimTypes.Email, "bob@test.com"),
-                        new Claim(JwtClaimTypes.Role,"user"),
-                         
+                    {    new Claim(JwtClaimTypes.Role,"application"),
+                        new Claim("Company","Pay_NLD"),
+                        new Claim("Department","Legal")
                     }
-
 
                 },
 
@@ -50,19 +45,18 @@ namespace IdentityHostSvr.Models
                     AccessTokenType = AccessTokenType.Jwt,  // a reference token 
                     AlwaysSendClientClaims =true,
                     AlwaysIncludeUserClaimsInIdToken= true,
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,  // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials ,//GrantTypes.ClientCredentials,  // no interactive user, use the clientid/secret for authentication
                     AllowedScopes =new List<string>{
                        new string("api2.read")
                     },
-                   // AuthorizationCodeLifetime =300,
-                   // IdentityTokenLifetime = 300,
-                    AccessTokenLifetime = 20,   // 10 s by intention
+
+                    AccessTokenLifetime = 20,   // 10 s by intention 
 
                     Claims = new List<Claim>
                     {
-                        new Claim(JwtClaimTypes.Name,"Alice"),
-                        new Claim(JwtClaimTypes.Email, "alice@test.com"),
                         new Claim(JwtClaimTypes.Role,"user"),
+                        new Claim("Company","Pay_THA"),
+                        new Claim("Department","Legal")
                     }
 
                 }
