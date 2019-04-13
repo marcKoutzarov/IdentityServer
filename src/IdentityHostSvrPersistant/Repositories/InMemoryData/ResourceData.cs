@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IdentityHostSvr.Repositories.InMemoryData
 {
-    public static class ClientsData
+    public static class ResourceData
     {
       
         public static ClientPoco GetClients(string ClientID)
@@ -16,6 +16,21 @@ namespace IdentityHostSvr.Repositories.InMemoryData
             g = GetClients().FirstOrDefault(c => c.ClientUserName== ClientID);
             return g;
         }
+        public static ApiResourcePoco GetApis(string apiName)
+        {
+            ApiResourcePoco g = null;
+            g = GetApis().FirstOrDefault(c => c.Name == apiName);
+            return g;
+        }
+
+
+
+
+
+
+
+
+
 
         public static IEnumerable<ClientPoco> GetClients()
         {
@@ -23,49 +38,148 @@ namespace IdentityHostSvr.Repositories.InMemoryData
             {
                 new ClientPoco {
                     Id=1,
-                    ClientUserName ="",
-                    AccessTokenLifeTime =0,
-                    AccessTokenType ="",
-                    Description ="",
+                    ClientUserName ="Client1",
+                    AccessTokenLifeTime =300,
+                    AccessTokenType ="REF",
+                    Description ="Description of Client 1",
                     Enabled =true,
-                    Role ="",
-                    Secret ="",
+                    Role ="frontend",
+                    Secret ="Client1Secret",
                     ApiScopes = new List<ScopePoco> {
-                        new ScopePoco{Id=1,  Api="", Scope=""},
-                        new ScopePoco{Id=2,  Api="", Scope=""}
+                        new ScopePoco{Id=1,  Api="api1", Scope="api1.read"},
+                        new ScopePoco{Id=2,  Api="api1", Scope="api1.insert"},
+                        new ScopePoco{Id=3,  Api="api1", Scope="api1.update"},
+                        new ScopePoco{Id=4,  Api="api2", Scope="api2.read"},
+                        new ScopePoco{Id=5,  Api="api2", Scope="api2.insert"},
+                        new ScopePoco{Id=6,  Api="api2", Scope="api2.update"},
+                        new ScopePoco{Id=7,  Api="api3", Scope="api3.read"},
+                        new ScopePoco{Id=8,  Api="api3", Scope="api3.insert"},
+                        new ScopePoco{Id=9,  Api="api3", Scope="api3.update"}
                     }
                 },
                 new ClientPoco {
                     Id=1,
-                    ClientUserName ="",
-                    AccessTokenLifeTime =0,
-                    AccessTokenType ="",
-                    Description ="",
+                    ClientUserName ="Client2",
+                    AccessTokenLifeTime =300,
+                    AccessTokenType ="REF",
+                    Description ="Description of Client 2",
                     Enabled =true,
-                    Role ="",
-                    Secret ="",
+                    Role ="api",
+                    Secret ="Client2Secret",
                     ApiScopes = new List<ScopePoco> {
-                        new ScopePoco{Id=1,  Api="", Scope=""},
-                        new ScopePoco{Id=2,  Api="", Scope=""}
+                        new ScopePoco{Id=1,  Api="api1", Scope="api1.read"},
+                        new ScopePoco{Id=4,  Api="api2", Scope="api2.read"},
+                        new ScopePoco{Id=7,  Api="api3", Scope="api3.read"}
                     }
                 },
                 new ClientPoco {
                     Id=1,
-                    ClientUserName ="",
-                    AccessTokenLifeTime =0,
-                    AccessTokenType ="",
-                    Description ="",
+                    ClientUserName ="Client3",
+                    AccessTokenLifeTime =300,
+                    AccessTokenType ="REF",
+                    Description ="Description of Client 3",
                     Enabled =true,
-                    Role ="",
-                    Secret ="",
+                    Role ="service",
+                    Secret ="Client3Secret",
                     ApiScopes = new List<ScopePoco> {
-                        new ScopePoco{Id=1,  Api="", Scope=""},
-                        new ScopePoco{Id=2,  Api="", Scope=""}
+                        new ScopePoco{Id=2,  Api="api1", Scope="api1.insert"},
+                        new ScopePoco{Id=5,  Api="api2", Scope="api2.insert"},
+                        new ScopePoco{Id=8,  Api="api3", Scope="api3.insert"}
                     }
                 }
             };
         }
 
+        public static IEnumerable<ApiResourcePoco> GetApis()
+        {
+            return new List<ApiResourcePoco>
+            {
+               new ApiResourcePoco {
+                    Id =1,
+                    ApiSecrets="api1secret",
+                    Name ="api1",
+                    DisplayName ="Display name of api 1",
+                    Description ="Description of api 1",
+                    Enabled =true,
+                    ApiScopes = new List<ScopePoco> {
+                        new ScopePoco{Id=1,  Api="api1", Scope="api1.read"},
+                        new ScopePoco{Id=2,  Api="api1", Scope="api1.insert"},
+                        new ScopePoco{Id=3,  Api="api1", Scope="api1.update"}
+                    },
+                    UserClaims = new List<ClaimPoco>{
+                        new ClaimPoco{ ClaimName="Name",Value=""},
+                        new ClaimPoco{ ClaimName="Role",Value=""},
+                        new ClaimPoco{ ClaimName="Email",Value=""},
+                        new ClaimPoco{ ClaimName="Subject",Value=""}
+                    }
+                },
+               new ApiResourcePoco {
+                    Id =2,
+                    ApiSecrets="api2secret",
+                    Name ="api2",
+                     DisplayName ="Display name of api 2",
+                    Description ="Description of api 2",
+                    Enabled =true,
+                    ApiScopes = new List<ScopePoco> {
+                        new ScopePoco{Id=4,  Api="api2", Scope="api2.read"},
+                        new ScopePoco{Id=5,  Api="api2", Scope="api2.insert"},
+                        new ScopePoco{Id=6,  Api="api2", Scope="api2.update"}
+                    },
+                    UserClaims = new List<ClaimPoco>{
+                        new ClaimPoco{ ClaimName="Name",Value=""},
+                        new ClaimPoco{ ClaimName="Role",Value=""},
+                        new ClaimPoco{ ClaimName="Email",Value=""},
+                        new ClaimPoco{ ClaimName="Subject",Value=""}
+                    }
+                },
+               new ApiResourcePoco {
+                    Id =3,
+                    ApiSecrets="api3secret",
+                    Name ="api3",
+                    DisplayName ="Display name of api 3",
+                    Description ="Description of api 3",
+                    Enabled =true,
+                     ApiScopes = new List<ScopePoco> {
+                        new ScopePoco{Id=7,  Api="api3", Scope="api3.read"},
+                        new ScopePoco{Id=8,  Api="api3", Scope="api3.insert"},
+                        new ScopePoco{Id=9,  Api="api3", Scope="api3.update"}
+                    },
+                    UserClaims = new List<ClaimPoco>{
+                         new ClaimPoco{ ClaimName="Name",Value=""},
+                        new ClaimPoco{ ClaimName="Role",Value=""},
+                        new ClaimPoco{ ClaimName="Email",Value=""},
+                        new ClaimPoco{ ClaimName="Subject",Value=""}
+                    }
+                }
+            };
+        }
+
+        public static IEnumerable<IdentityResourcesPoco> GetIdentityResources()
+        {
+            return new IdentityResourcesPoco[]{
+               new IdentityResourcesPoco{
+                    Name="OpenId Resouce",
+                    IdentityResourceType= IdentityResourceType.OpenId,
+                    UserClaims = new List<ClaimPoco>{
+                        new ClaimPoco{ ClaimName="Name",Value=""},
+                        new ClaimPoco{ ClaimName="Role",Value=""},
+                        new ClaimPoco{ ClaimName="Email",Value=""},
+                        new ClaimPoco{ ClaimName="Subject",Value=""}
+                    }
+               },
+               new IdentityResourcesPoco{
+                    Name="Profile Resource",
+                    IdentityResourceType= IdentityResourceType.Profile,
+                    UserClaims = new List<ClaimPoco>{
+                        new ClaimPoco{ ClaimName="Name",Value=""},
+                        new ClaimPoco{ ClaimName="Role",Value=""},
+                        new ClaimPoco{ ClaimName="Email",Value=""},
+                        new ClaimPoco{ ClaimName="Subject",Value=""}
+                    }
+               }
+
+            };
+        }
 
     }
 }

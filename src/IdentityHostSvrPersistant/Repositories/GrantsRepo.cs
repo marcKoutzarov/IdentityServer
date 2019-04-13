@@ -1,4 +1,5 @@
 ﻿using IdentityHostSvr.Interfaces.Repositories;
+using IdentityHostSvr.Repositories.InMemoryData;
 using IdentityHostSvr.Repositories.pocos;
 using System;
 using System.Collections.Generic;
@@ -11,22 +12,22 @@ namespace IdentityHostSvr.Repositories
     {
         public void Add(GrantPoco Grant)
         {
-            throw new NotImplementedException();
+            GrantsData.Add(Grant);
         }
 
         public IEnumerable<GrantPoco> GetAll()
         {
-            throw new NotImplementedException();
+            return GrantsData.GetAll();
         }
 
         public GrantPoco GetByKey(string key)
         {
-            throw new NotImplementedException();
+            return GrantsData.GetByKey(key);
         }
 
         public void RemoveByKey(string key)
         {
-            throw new NotImplementedException();
+            GrantsData.RemoveByKey(key);
         }
     }
 }
