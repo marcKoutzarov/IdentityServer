@@ -28,6 +28,7 @@ namespace IdentityHostSvr.Stores
             {
                 SubjectId = g.SubjectId,
                 Username = g.Username,
+                AllowedClients= g.AllowedClients,
                 Salt = g.Salt,
                 Email = g.Email,
                 FamilyName =g.FamilyName,
@@ -37,7 +38,8 @@ namespace IdentityHostSvr.Stores
                 Role =g.Role ,
                 ProviderName =g.ProviderName ,
                 ProviderSubjectId =g.ProviderSubjectId
-            }; 
+            };
+
             return user;
         }
 
@@ -62,6 +64,5 @@ namespace IdentityHostSvr.Stores
 
             return user;
         }
-
     }
 }

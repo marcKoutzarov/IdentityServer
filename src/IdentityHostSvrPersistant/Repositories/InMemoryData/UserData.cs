@@ -32,15 +32,16 @@ namespace IdentityHostSvr.Repositories.InMemoryData
                 new UserPoco{
                     SubjectId="1",
                     Username="bob",
-                    Password = CreateHashedPasword("bob","1234"),
-                    Salt ="1234",
+                    Password = CreateHashedPasword("password","1111"),
+                    Salt ="1111",
                     Email ="bob@email.com",
-                    GivenName ="alice",
-                    FamilyName ="in worderland",
+                    GivenName ="bob",
+                    FamilyName ="the Builder",
                     IsActive =true,
                     ProviderName ="" ,
                     ProviderSubjectId ="",
                     Role ="Rolebob",
+                    AllowedClients="Client1",
                     DateCreated=new DateTime().Date,
                     DateUpdated=new DateTime().Date,
                     CreatedBy ="test",
@@ -50,16 +51,17 @@ namespace IdentityHostSvr.Repositories.InMemoryData
                    new UserPoco{
                     SubjectId="2",
                     Username="alice",
-                    Password = CreateHashedPasword("alice","5678"),
-                    Salt ="5678",
+                    Password = CreateHashedPasword("password","1111"),
+                    Salt ="1111",
                     Email ="alice@email.com",
-                    GivenName ="Bob",
-                    FamilyName ="the builder",
+                    GivenName ="alice",
+                    FamilyName ="Wonderland",
                     IsActive =true,
                     ProviderName ="" ,
                     ProviderSubjectId ="",
                     Role ="roleAlice",
-                     DateCreated=new DateTime().Date,
+                    AllowedClients="Client1;client2",
+                    DateCreated=new DateTime().Date,
                     DateUpdated=new DateTime().Date,
                     CreatedBy ="test",
                     UpdatedBy ="test"
@@ -70,7 +72,7 @@ namespace IdentityHostSvr.Repositories.InMemoryData
         private static string CreateHashedPasword(string password, string salt)
         {
             var StrToHash = password + salt;
-            var result = new Secret("Client1Secret".Sha512());
+            var result = new Secret(StrToHash.Sha512());
             return result.Value;
         }
 

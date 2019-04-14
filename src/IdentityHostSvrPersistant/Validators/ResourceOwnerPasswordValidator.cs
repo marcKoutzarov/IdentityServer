@@ -2,6 +2,7 @@
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -11,11 +12,11 @@ namespace IdentityHostSvr.Models.Validators
     {
 
         //Use the Store to get users
-        private readonly IUserStore _userRepository;
+        private readonly IUserStore _userStore;
 
         public ResourceOwnerPasswordValidator(IUserStore userStore)
         {
-            _userRepository = userStore; //DI
+            _userStore = userStore; //DI
         }
 
         //this is used to validate your user account with provided grant at /connect/token
@@ -24,11 +25,32 @@ namespace IdentityHostSvr.Models.Validators
             try
             {
                 //get your user model from db (by username - in my case its email)
-                var user = _userRepository.GetUser(context.UserName);
-
+                var user = _userStore.GetUser(context.UserName);
+               
 
                 if (user != null)
                 {
+                    // check if this user can access this client.
+                    if (!String.IsNullOrEmpty(user.AllowedClients))
+                    {
+                        string[] AllowedClients = user.AllowedClients.Split(";");
+                        var cN = AllowedClients.FirstOrDefault(c => c == context.Request.Client.ClientId);
+
+                        if (cN.Length == 0)
+                        {
+                            context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Client Access denied for: " + context.Request.Client.ClientId);
+                            return;
+                        }
+
+                    }
+                    else {
+                      context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Client Access denied for: " + context.Request.Client.ClientId);
+                      return;
+                    }
+                   
+
+
+
                     //check if password match
                     if (user.Password == CreateHashedPasword(context.Password, user.Salt))
                     {
@@ -36,10 +58,10 @@ namespace IdentityHostSvr.Models.Validators
                         context.Result = new GrantValidationResult(
                            subject: user.SubjectId.ToString(),
                            authenticationMethod: "custom",
-                           claims:user.Claims);
+                           claims:user.Claims
+                           );
                            return;
                     }
-
 
                     context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Incorrect password");
                     return;
@@ -60,7 +82,9 @@ namespace IdentityHostSvr.Models.Validators
         private static string CreateHashedPasword(string password, string salt)
         {
             var StrToHash = password + salt;
-            var result = new Secret("Client1Secret".Sha512());
+
+            var result = new Secret(StrToHash.Sha512());
+
             return result.Value;
         }
     }

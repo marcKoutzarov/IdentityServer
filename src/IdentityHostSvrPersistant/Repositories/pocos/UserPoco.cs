@@ -16,6 +16,7 @@ namespace IdentityHostSvr.Repositories.pocos
         public string FamilyName { get; set; }
         public string Email { get; set; }
         public string Role { get; set; }
+        public string AllowedClients { get; set; }
         public bool IsActive { get; set; } = true;
         public string Salt { get; set; } = "";
        

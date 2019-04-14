@@ -29,14 +29,17 @@ namespace IdentityHostSvr.Stores
                 ClientId = Poco.ClientUserName,
                 ClientName = Poco.ClientUserName,
                 Description = Poco.Description,
-                ClientSecrets = { new Secret(Poco.Secret)}, 
+                ClientSecrets = {new Secret((Poco.Secret).ToSha512()) }, 
                 AccessTokenType = GetTokenType(Poco.AccessTokenType), 
                 AlwaysSendClientClaims = true,
                 AlwaysIncludeUserClaimsInIdToken = true,
                 AccessTokenLifetime = Poco.AccessTokenLifeTime,
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials, 
                 AllowedScopes = GetScopes(Poco.ApiScopes),
-             };
+              //  Claims
+                
+            };
+
             return Task.FromResult(c);
         }
 

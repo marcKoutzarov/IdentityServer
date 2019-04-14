@@ -18,7 +18,7 @@ namespace IdentityHostSvr.Stores
         public Task<IEnumerable<PersistedGrant>> GetAllAsync(string subjectId)
         {
             IEnumerable<PersistedGrant> result = new List<PersistedGrant>();
-            IEnumerable<GrantPoco> grants = _grantRepo.GetAll(subjectId);
+            List<GrantPoco> grants = _grantRepo.GetAll(subjectId).ToList();
 
            foreach (GrantPoco p in grants)
            {
@@ -34,7 +34,7 @@ namespace IdentityHostSvr.Stores
                        });
             }
 
-            return Task<IEnumerable<PersistedGrant>>.FromResult(result);
+            return Task<List<PersistedGrant>>.FromResult(result);
         }
         public Task<PersistedGrant> GetAsync(string key)
         {

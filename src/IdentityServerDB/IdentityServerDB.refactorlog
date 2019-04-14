@@ -189,4 +189,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Scope" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="cc9badd3-a018-40a7-aee4-e1f64eeadbce" ChangeDateTime="04/14/2019 13:52:41">
+    <Property Name="ElementName" Value="[dbo].[Clients].[EnumTokenTypeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clients]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EnumTokenType" />
+  </Operation>
 </Operations>

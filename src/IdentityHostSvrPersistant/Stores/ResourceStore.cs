@@ -1,5 +1,6 @@
 ﻿using IdentityHostSvr.Interfaces.Repositories;
 using IdentityHostSvr.Repositories.pocos;
+using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using System.Collections.Generic;
@@ -31,11 +32,11 @@ namespace IdentityHostSvr.Stores
         {
             var apis = _repo.FindApiRecourceByScopesAsync(scopeNames).Result; //ApiResourcesConfig.GetApis();
 
-            IEnumerable<ApiResource> result = null;
+            List<ApiResource> result = new List<ApiResource>();
 
             foreach (ApiResourcePoco a in apis)
             {
-                result.Append(ReturnApiResource(a));
+                result.Add(ReturnApiResource(a));
             }
 
             return Task.FromResult<IEnumerable<ApiResource>>(result);
@@ -45,11 +46,11 @@ namespace IdentityHostSvr.Stores
         {
             // var A = IdentityResourcesConfig.GetIdentityResources();
             IEnumerable<IdentityResourcesPoco> IdentityPocos = _repo.GetAllIdentityResoucesAsync().Result;
-            IEnumerable<IdentityResource> result = new List<IdentityResource>();
+            List<IdentityResource> result = new List<IdentityResource>();
 
             foreach(IdentityResourcesPoco ip in IdentityPocos)
             {
-                result.Append(ReturnIdentityResource(ip));
+                result.Add(ReturnIdentityResource(ip));
             }
 
             return Task.FromResult<IEnumerable<IdentityResource>>(result);
@@ -60,18 +61,18 @@ namespace IdentityHostSvr.Stores
            
             // get all Identity resources
             IEnumerable<IdentityResourcesPoco> IdentityPocos = _repo.GetAllIdentityResoucesAsync().Result;
-            IEnumerable<IdentityResource> Identityresult = new List<IdentityResource>();
+            List<IdentityResource> Identityresult = new List<IdentityResource>();
             foreach (IdentityResourcesPoco ip in IdentityPocos)
             {
-                Identityresult.Append(ReturnIdentityResource(ip));
+                Identityresult.Add(ReturnIdentityResource(ip));
             }
 
             // get all api resources
             IEnumerable<ApiResourcePoco> ApiPocos = _repo.GetAllApiRecourcesAsync().Result;
-            IEnumerable<ApiResource> Apiresult = new List<ApiResource>();
+            List<ApiResource> Apiresult = new List<ApiResource>();
             foreach (ApiResourcePoco ip in ApiPocos)
             {
-                Apiresult.Append(ReturnApiResource(ip));
+                Apiresult.Add(ReturnApiResource(ip));
             }
 
 
@@ -102,7 +103,12 @@ namespace IdentityHostSvr.Stores
                 return new IdentityResources.OpenId()
                 {
                     Name = a.Name,
-                    UserClaims = ReturnApiUserClaims(a.UserClaims) 
+                    UserClaims ={
+                        JwtClaimTypes.Name,
+                        JwtClaimTypes.Email,
+                        JwtClaimTypes.Role,
+                        JwtClaimTypes.Subject
+                    }
                 };
             }
             else if (a.IdentityResourceType == IdentityResourceType.Profile)
@@ -110,7 +116,12 @@ namespace IdentityHostSvr.Stores
 
                 return new IdentityResources.OpenId(){
                     Name = a.Name,
-                    UserClaims = ReturnApiUserClaims(a.UserClaims)
+                    UserClaims ={
+                        JwtClaimTypes.Name,
+                        JwtClaimTypes.Email,
+                        JwtClaimTypes.Role,
+                        JwtClaimTypes.Subject
+                    }
                 };
 
             }else
@@ -123,12 +134,17 @@ namespace IdentityHostSvr.Stores
 
             return new ApiResource {
                 Name=a.Name,
-                ApiSecrets = {new Secret(a.ApiSecrets)},
+                ApiSecrets = {new Secret(a.ApiSecrets.Sha512())},
                 Description=a.Description,
                 DisplayName =a.DisplayName,
                 Enabled = a.Enabled,
                 Scopes = ReturnApiScopes(a.ApiScopes),
-                UserClaims = ReturnApiUserClaims(a.UserClaims)
+                UserClaims ={
+                        JwtClaimTypes.Name,
+                        JwtClaimTypes.Email,
+                        JwtClaimTypes.Role,
+                        JwtClaimTypes.Subject
+                    }
             };
         }
 

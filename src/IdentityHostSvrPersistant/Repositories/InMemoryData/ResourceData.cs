@@ -16,6 +16,15 @@ namespace IdentityHostSvr.Repositories.InMemoryData
             g = GetClients().FirstOrDefault(c => c.ClientUserName== ClientID);
             return g;
         }
+
+
+        public static IEnumerable<ApiResourcePoco> GetApiRecourceByScopesAsync(IEnumerable<string> scopeNames)
+        {
+            // need to implement scopenames filter later
+            return GetApis();
+        }
+
+
         public static ApiResourcePoco GetApis(string apiName)
         {
             ApiResourcePoco g = null;
@@ -39,12 +48,12 @@ namespace IdentityHostSvr.Repositories.InMemoryData
                 new ClientPoco {
                     Id=1,
                     ClientUserName ="Client1",
+                    Secret ="Client1Secret",
                     AccessTokenLifeTime =300,
                     AccessTokenType ="REF",
                     Description ="Description of Client 1",
                     Enabled =true,
                     Role ="frontend",
-                    Secret ="Client1Secret",
                     ApiScopes = new List<ScopePoco> {
                         new ScopePoco{Id=1,  Api="api1", Scope="api1.read"},
                         new ScopePoco{Id=2,  Api="api1", Scope="api1.insert"},
@@ -52,9 +61,9 @@ namespace IdentityHostSvr.Repositories.InMemoryData
                         new ScopePoco{Id=4,  Api="api2", Scope="api2.read"},
                         new ScopePoco{Id=5,  Api="api2", Scope="api2.insert"},
                         new ScopePoco{Id=6,  Api="api2", Scope="api2.update"},
-                        new ScopePoco{Id=7,  Api="api3", Scope="api3.read"},
-                        new ScopePoco{Id=8,  Api="api3", Scope="api3.insert"},
-                        new ScopePoco{Id=9,  Api="api3", Scope="api3.update"}
+                        //new ScopePoco{Id=7,  Api="api3", Scope="api3.read"},
+                        //new ScopePoco{Id=8,  Api="api3", Scope="api3.insert"},
+                        //new ScopePoco{Id=9,  Api="api3", Scope="api3.update"}
                     }
                 },
                 new ClientPoco {
@@ -96,7 +105,7 @@ namespace IdentityHostSvr.Repositories.InMemoryData
             {
                new ApiResourcePoco {
                     Id =1,
-                    ApiSecrets="api1secret",
+                    ApiSecrets="Api1Secret",
                     Name ="api1",
                     DisplayName ="Display name of api 1",
                     Description ="Description of api 1",
@@ -115,9 +124,9 @@ namespace IdentityHostSvr.Repositories.InMemoryData
                 },
                new ApiResourcePoco {
                     Id =2,
-                    ApiSecrets="api2secret",
+                    ApiSecrets="Api2Secret",
                     Name ="api2",
-                     DisplayName ="Display name of api 2",
+                    DisplayName ="Display name of api 2",
                     Description ="Description of api 2",
                     Enabled =true,
                     ApiScopes = new List<ScopePoco> {
@@ -134,7 +143,7 @@ namespace IdentityHostSvr.Repositories.InMemoryData
                 },
                new ApiResourcePoco {
                     Id =3,
-                    ApiSecrets="api3secret",
+                    ApiSecrets="Api3Secret",
                     Name ="api3",
                     DisplayName ="Display name of api 3",
                     Description ="Description of api 3",

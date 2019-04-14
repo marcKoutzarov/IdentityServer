@@ -14,6 +14,7 @@ namespace IdentityHostSvr.Models
         public string ProviderSubjectId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string AllowedClients { get; set; }
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public string Email { get; set; }

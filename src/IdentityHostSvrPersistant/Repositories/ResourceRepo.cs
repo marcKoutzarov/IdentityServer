@@ -27,8 +27,9 @@ namespace IdentityHostSvr.Repositories
 
         public Task<IEnumerable<ApiResourcePoco>> FindApiRecourceByScopesAsync(IEnumerable<string> scopeNames)
         {
-            throw new NotImplementedException();
+           return Task.FromResult(ResourceData.GetApiRecourceByScopesAsync(scopeNames));
         }
+
 
         // -------API SCOPES-------------
         public Task<List<ScopePoco>> FindApiScopesAsync(string apiName)
@@ -67,6 +68,7 @@ namespace IdentityHostSvr.Repositories
 
         public Task<IEnumerable<IdentityResourcesPoco>> FindIdentityResourcesByScopeAsync(IEnumerable<string> scopeNames)
         {
+
             throw new NotImplementedException();
         }
 
