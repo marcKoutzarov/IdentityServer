@@ -10,6 +10,7 @@ namespace IdentityHostSvr.Repositories.pocos
         public IdentityResourceType IdentityResourceType { get; set; }
         public string Name { get; set; }
         public List<ClaimPoco> UserClaims { get; set; }
+
     }
 
     public enum IdentityResourceType

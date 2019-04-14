@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace IdentityHostSvr.Repositories.pocos
 {
-    public class ApiResourcePoco: CreatedBase
+    public class ApiResourcePoco : CreatedBase
     {
 
         public int Id { get; set; }

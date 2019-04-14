@@ -6,8 +6,8 @@ using IdentityModel;
 using IdentityServer4.Models;
 using System.Security.Claims;
 using IdentityServer4.Stores;
-using IIdentityHostSvr.Repositories.Mock;
 using IdentityHostSvr.Interfaces.Repositories;
+using IdentityHostSvr.Repositories.pocos;
 
 namespace IdentityHostSvr.Stores
 {
@@ -20,28 +20,46 @@ namespace IdentityHostSvr.Stores
             _repo = repo;
         }
 
-
-        /// <summary>
-        /// Implement 
-        /// </summary>
-        /// <param name="clientId">The Client ID</param>
-        /// <returns></returns>
         public Task<Client> FindClientByIdAsync(string clientId)
         {
-            var Clients = ClientsConfig.GetClients();
+            var Poco = _repo.FindClientByUsernameAsync(clientId).Result;
 
-            Client Result= null;
-
-            foreach (Client c in Clients)
+            Client c = new Client
             {
-                 if (c.ClientId == clientId)
-                {
-                    Result = c;
-                    return Task.FromResult<Client>(Result);
-                }
-            }
+                ClientId = Poco.ClientUserName,
+                ClientName = Poco.ClientUserName,
+                Description = Poco.Description,
+                ClientSecrets = { new Secret(Poco.Secret)}, 
+                AccessTokenType = GetTokenType(Poco.AccessTokenType), 
+                AlwaysSendClientClaims = true,
+                AlwaysIncludeUserClaimsInIdToken = true,
+                AccessTokenLifetime = Poco.AccessTokenLifeTime,
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials, 
+                AllowedScopes = GetScopes(Poco.ApiScopes),
+             };
+            return Task.FromResult(c);
+        }
 
-            return Task.FromResult<Client>(Result);
+        private AccessTokenType GetTokenType(string type) {
+            if (type== "REF")
+            {
+                return AccessTokenType.Reference;
+            }
+            else
+            {
+                return AccessTokenType.Jwt;
+            }
+        }
+
+        private List<string> GetScopes(List<ScopePoco> scopes)
+        {
+            List<string> results= new List<string>();
+
+            foreach (ScopePoco s in scopes)
+            {
+                results.Add(s.Scope);
+            }
+            return results;
         }
     }
 }

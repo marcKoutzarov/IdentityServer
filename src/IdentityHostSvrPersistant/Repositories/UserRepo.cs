@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityHostSvr.Interfaces.Repositories;
+using IdentityHostSvr.Repositories.InMemoryData;
 using IdentityHostSvr.Repositories.pocos;
 
 namespace IdentityHostSvr.Repositories
@@ -11,13 +12,13 @@ namespace IdentityHostSvr.Repositories
     {
         public UserPoco GetUser(string Username)
         {
-            throw new NotImplementedException();
+           return UserData.GetUsers(Username);
         }
 
-        public UserPoco GetUserById(string Id)
+        public UserPoco GetUserById(string id)
         {
-            throw new NotImplementedException();
+            var i =int.Parse(id);
+            return UserData.GetUsers(i);
         }
-
     }
 }

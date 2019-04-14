@@ -29,8 +29,8 @@ namespace IdentityHostSvr.Models.Validators
 
                 if (user != null)
                 {
-                    //check if password match - remember to hash password if stored as hash in db
-                    if (user.Password == context.Password)
+                    //check if password match
+                    if (user.Password == CreateHashedPasword(context.Password, user.Salt))
                     {
                         //set the result
                         context.Result = new GrantValidationResult(
@@ -56,6 +56,12 @@ namespace IdentityHostSvr.Models.Validators
             }
 
         }
-        
+
+        private static string CreateHashedPasword(string password, string salt)
+        {
+            var StrToHash = password + salt;
+            var result = new Secret("Client1Secret".Sha512());
+            return result.Value;
+        }
     }
 }

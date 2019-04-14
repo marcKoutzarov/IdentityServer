@@ -32,25 +32,25 @@ namespace IdentityHostSvr
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+           
+            //Inject the Repository classes
+            services.AddTransient<IResourcesRepo, ResourceRepo>();
+            services.AddTransient<IUserRepo, UserRepo>();
+            services.AddTransient<IGrantsRepo, GrantsRepo>();
 
+            //Inject the classes for the profile service
+            services.AddTransient<IUserStore, UserStore>();
+            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+            services.AddTransient<IProfileService, ProfileService>();
+
+            // set up Identityserver
             IdentityBuilder = services.AddIdentityServer()
                .AddResourceStore<ResourceStore>()
                .AddClientStore<ClientStore>()
                .AddPersistedGrantStore<PersistedGrantsStore>()
                .AddProfileService<ProfileService>()
                .AddDeveloperSigningCredential();
-
-            //Inject the Repository classes
-            services.AddTransient<IResourcesRepo, ResourceRepo>();
-            services.AddTransient<IUserRepo, UserRepo>();
-            services.AddTransient<IGrantsRepo, GrantsRepo>();
-
-           
-            //Inject the classes for the profile service
-            services.AddTransient<IUserStore, UserStore>();
-            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
-            services.AddTransient<IProfileService, ProfileService>();
-
+                
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info

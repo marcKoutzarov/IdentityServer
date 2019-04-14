@@ -2,7 +2,7 @@
 using IdentityHostSvr.Interfaces.Repositories;
 using IdentityHostSvr.Interfaces.Stores;
 using IdentityHostSvr.Models;
-using IdentityHostSvr.Repositories.Mock;
+using IdentityHostSvr.Repositories.pocos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,6 @@ namespace IdentityHostSvr.Stores
 {
     public class UserStore : IUserStore
     {
-        private List<User> _users = UsersConfig.GetUsers();
         private IUserRepo _repo;
 
         public UserStore(IUserRepo UserRepo)
@@ -24,16 +23,44 @@ namespace IdentityHostSvr.Stores
 
         public User GetUser(string Username)
         {
-            User g = null;
-            g = _users.FirstOrDefault(c => c.Username == Username);
-            return g;
+            UserPoco g = _repo.GetUser(Username);
+            User user = new User
+            {
+                SubjectId = g.SubjectId,
+                Username = g.Username,
+                Salt = g.Salt,
+                Email = g.Email,
+                FamilyName =g.FamilyName,
+                GivenName =g.GivenName,
+                Password = g.Password,
+                IsActive =g.IsActive ,
+                Role =g.Role ,
+                ProviderName =g.ProviderName ,
+                ProviderSubjectId =g.ProviderSubjectId
+            }; 
+            return user;
         }
 
         public User GetUserBySubject(string SubjectId)
         {
-            User g = null;
-            g = _users.FirstOrDefault(c => c.SubjectId== SubjectId);
-            return g;
+            UserPoco g = _repo.GetUserById(SubjectId);
+
+            User user = new User
+            {
+                SubjectId = g.SubjectId,
+                Username = g.Username,
+                Salt = g.Salt,
+                Email = g.Email,
+                FamilyName = g.FamilyName,
+                GivenName = g.GivenName,
+                Password = g.Password,
+                IsActive = g.IsActive,
+                Role = g.Role,
+                ProviderName = g.ProviderName,
+                ProviderSubjectId = g.ProviderSubjectId
+            };
+
+            return user;
         }
 
     }

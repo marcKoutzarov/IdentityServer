@@ -15,14 +15,24 @@ namespace IdentityHostSvr.Repositories
             GrantsData.Add(Grant);
         }
 
-        public IEnumerable<GrantPoco> GetAll()
+        public IEnumerable<GrantPoco> GetAll(string subjectId)
         {
-            return GrantsData.GetAll();
+            return GrantsData.GetAll(subjectId);
         }
 
         public GrantPoco GetByKey(string key)
         {
             return GrantsData.GetByKey(key);
+        }
+
+        public void RemoveAll(string subjectId, string clientId)
+        {
+            GrantsData.RemoveAll(subjectId, clientId);
+        }
+
+        public void RemoveAll(string subjectId, string clientId, string type)
+        {
+            GrantsData.RemoveAll(subjectId, clientId, type);
         }
 
         public void RemoveByKey(string key)

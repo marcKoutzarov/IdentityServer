@@ -10,9 +10,10 @@ namespace IdentityHostSvr.Repositories.InMemoryData
     {
         private static List<GrantPoco> _grants = new List<GrantPoco>();
 
-        public static IEnumerable<GrantPoco> GetAll()
+        public static IEnumerable<GrantPoco> GetAll(string subjectId)
         {
-            return _grants;
+            var r = _grants.ToList().Where(c => c.SubjectId == subjectId);
+            return r;
         }
         public static void Add(GrantPoco g)
         {
@@ -30,5 +31,18 @@ namespace IdentityHostSvr.Repositories.InMemoryData
             var r = _grants.ToList().Where(c => c.Key != key);
             _grants = r.ToList<GrantPoco>();
         }
+
+        public static void RemoveAll(string subjectId, string clientId)
+        {
+            var r = _grants.ToList().Where(c => c.ClientId != clientId & c.SubjectId != subjectId);
+            _grants = r.ToList<GrantPoco>();
+        }
+
+        public static void RemoveAll(string subjectId, string clientId, string type)
+        {
+            var r = _grants.ToList().Where(c => c.ClientId != clientId & c.SubjectId != subjectId & c.Type!= type);
+            _grants = r.ToList<GrantPoco>();
+        }
+
     }
 }

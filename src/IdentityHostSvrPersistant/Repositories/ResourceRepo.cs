@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityHostSvr.Interfaces.Repositories;
+using IdentityHostSvr.Repositories.InMemoryData;
 using IdentityHostSvr.Repositories.pocos;
 
 namespace IdentityHostSvr.Repositories
 {
     public class ResourceRepo : IResourcesRepo
     {
-        public Task<ApiResourcePoco> FindApiRecourceByNameAsync(string name)
+
+
+        // -------API-------------
+
+        public Task<IEnumerable<ApiResourcePoco>> GetAllApiRecourcesAsync()
         {
-            throw new NotImplementedException();
+            var ApiResources = ResourceData.GetApis();
+            return Task.FromResult(ApiResources);
+        }
+
+        public Task<ApiResourcePoco> FindApiRecourceByNameAsync(string apiName)
+        {
+            return Task.FromResult(ResourceData.GetApis(apiName));
         }
 
         public Task<IEnumerable<ApiResourcePoco>> FindApiRecourceByScopesAsync(IEnumerable<string> scopeNames)
@@ -19,19 +30,39 @@ namespace IdentityHostSvr.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ScopePoco>> FindApiScopesAsync(string apiName)
+        // -------API SCOPES-------------
+        public Task<List<ScopePoco>> FindApiScopesAsync(string apiName)
         {
-            throw new NotImplementedException();
+            var apiScopes = ResourceData.GetApis(apiName).ApiScopes;
+            return Task.FromResult(apiScopes);
         }
 
+
+        
+        
+        // -------CLIENTS-------------
         public Task<ClientPoco> FindClientByUsernameAsync(string clientName)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(ResourceData.GetClients(clientName));
         }
 
-        public Task<IEnumerable<ScopePoco>> FindClientScopesAsync(string clientName)
+        // -------CLIENT SCOPES-------------
+        public Task<List<ScopePoco>> FindClientScopesAsync(string clientName)
         {
-            throw new NotImplementedException();
+            var ClientScopes = ResourceData.GetClients(clientName).ApiScopes;
+            return Task.FromResult(ClientScopes);
+        }
+    
+
+
+
+
+
+        // -------IDENTITIES-------------
+        public Task<IEnumerable<IdentityResourcesPoco>> GetAllIdentityResoucesAsync()
+        {
+            var IdentityResources = ResourceData.GetIdentityResources();
+            return Task.FromResult(IdentityResources);
         }
 
         public Task<IEnumerable<IdentityResourcesPoco>> FindIdentityResourcesByScopeAsync(IEnumerable<string> scopeNames)
@@ -39,9 +70,6 @@ namespace IdentityHostSvr.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IdentityResourcesPoco> GetAllIdentityResoucesAsync()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
