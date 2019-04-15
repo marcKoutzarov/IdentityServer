@@ -47,6 +47,7 @@ END
 
 
 
+
 BEGIN
 IF NOT EXISTS (select ID FROM [IdentityServerDB].[dbo].[EnumUserRoles] WHERE [Role]='customer' )
 INSERT INTO [IdentityServerDB].[dbo].[EnumUserRoles]
@@ -143,3 +144,50 @@ INSERT INTO [IdentityServerDB].[dbo].[EnumApiScopes]
      VALUES
            ('update', 'Read permission', 'init script','init script')
 END
+
+
+
+
+/* add client */
+begin 
+INSERT INTO [IdentityServerDB].[dbo].[Clients]
+           ([ClientUserName]
+           ,[Description]
+           ,[Secret]
+           ,[EnumTokenType]
+           ,[AccessTokenLifetime]
+           ,[Role]
+           ,[IsActive]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('ManagementConsole' 
+           ,'Client used by the Management console'
+           ,'secretClientManagementConsole'
+           ,'REF'
+           ,300
+           ,'frontend'
+           ,1
+           ,'init script'
+           ,'init script')
+
+end
+
+/* add API */
+INSERT INTO [IdentityServerDB].[dbo].[Apis]
+           ([ApiId]
+           ,[DisplayName]
+           ,[Description]
+           ,[Secret]
+           ,[Enabled]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('bankapi'
+           ,'Api for Bank resources'
+           ,'Add Banknames, Bank branches and bank Accounts'
+           ,'bankapisecret'
+           ,1
+           ,'init script'
+           ,'init script')
+

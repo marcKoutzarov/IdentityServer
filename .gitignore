@@ -4,3 +4,4 @@ src/TestClient/obj/
 src/IdentityHostSvrPersistant/bin/
 src/IdentityHostSvrPersistant/obj/
 src/IdentityServerDB/obj/
+src/IdentityServerDB/bin/Debug/IdentityServerDB.dacpac

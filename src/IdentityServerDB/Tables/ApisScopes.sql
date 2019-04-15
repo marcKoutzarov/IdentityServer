@@ -8,5 +8,9 @@
     [Updated] DATETIME NOT NULL DEFAULT Getdate(), 
     [UpdatedBy] NVARCHAR(50) NOT NULL,
 	CONSTRAINT [FK_ApisScopes_Apis] FOREIGN KEY ([ApiID]) REFERENCES Apis([ID]),
-	CONSTRAINT [FK_ApisScopes_EnumScopes] FOREIGN KEY ([Scope]) REFERENCES EnumApiScopes([Scope])
+	CONSTRAINT [FK_ApisScopes_EnumScopes] FOREIGN KEY ([Scope]) REFERENCES EnumApiScopes([Scope]),
+	CONSTRAINT [UQ_API_SCOPE] UNIQUE NONCLUSTERED
+    (
+        [ApiID], [Scope]
+    )
 )
