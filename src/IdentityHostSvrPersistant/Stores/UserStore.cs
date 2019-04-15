@@ -19,50 +19,39 @@ namespace IdentityHostSvr.Stores
             _repo = UserRepo;
         }
 
-
-
         public User GetUser(string Username)
         {
-            UserPoco g = _repo.GetUser(Username);
-            User user = new User
-            {
-                SubjectId = g.SubjectId,
-                Username = g.Username,
-                AllowedClients= g.AllowedClients,
-                Salt = g.Salt,
-                Email = g.Email,
-                FamilyName =g.FamilyName,
-                GivenName =g.GivenName,
-                Password = g.Password,
-                IsActive =g.IsActive ,
-                Role =g.Role ,
-                ProviderName =g.ProviderName ,
-                ProviderSubjectId =g.ProviderSubjectId
-            };
-
-            return user;
+           return MapUser(_repo.GetUser(Username));
         }
 
         public User GetUserBySubject(string SubjectId)
         {
-            UserPoco g = _repo.GetUserById(SubjectId);
+           return MapUser(_repo.GetUserById(SubjectId));
+        }
 
+
+
+        private User MapUser(UserPoco p)
+        {
             User user = new User
             {
-                SubjectId = g.SubjectId,
-                Username = g.Username,
-                Salt = g.Salt,
-                Email = g.Email,
-                FamilyName = g.FamilyName,
-                GivenName = g.GivenName,
-                Password = g.Password,
-                IsActive = g.IsActive,
-                Role = g.Role,
-                ProviderName = g.ProviderName,
-                ProviderSubjectId = g.ProviderSubjectId
+                SubjectId = p.SubjectId,
+                Username = p.Username,
+                Salt = p.Salt,
+                Email = p.Email,
+                FamilyName = p.FamilyName,
+                GivenName = p.GivenName,
+                Password = p.Password,
+                IsActive = p.IsActive,
+                Role = p.Role,
+                ProviderName = p.ProviderName,
+                ProviderSubjectId = p.ProviderSubjectId
             };
 
             return user;
+
         }
+
+
     }
 }
