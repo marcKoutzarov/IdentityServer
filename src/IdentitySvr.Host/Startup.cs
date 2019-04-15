@@ -1,10 +1,10 @@
 ﻿using IdentityHostSvr.Interfaces.Repositories;
 using IdentityHostSvr.Interfaces.Stores;
-using IdentityHostSvr.Models.Validators;
 using IdentityHostSvr.Repositories;
-using IdentityHostSvr.Stores;
 using IdentityServer4.Services;
 using IdentityServer4.Validation;
+using IdentitySvr.Host.Stores;
+using IdentitySvr.Host.Validators;
 using IdentitySvr.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

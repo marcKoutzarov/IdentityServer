@@ -13,3 +13,6 @@ src/IdentitySvr.Database/bin/
 src/IdentitySvr.Database/obj/
 src/IdentitySvr.Host/obj/
 src/IdentitySvr.Host/bin/
+IdentitySvr.IdentityServerUI/bin/
+IdentitySvr.IdentityServerUI/obj/
+.vs/

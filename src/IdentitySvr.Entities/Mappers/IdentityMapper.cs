@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IdentitySvr.Entities.Mappers
 {
-    public class ScopeMapper
+    class IdentityMapper
     {
     }
 }

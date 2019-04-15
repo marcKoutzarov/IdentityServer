@@ -7,4 +7,3 @@ E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\
 E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\predeploy.sql
 E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\IdentityServerDB.dll
 E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\IdentityServerDB.pdb
-E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\IdentitySvr.Database.sqlprojAssemblyReference.cache

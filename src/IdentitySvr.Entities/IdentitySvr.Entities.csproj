@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="3.10.7" />
+    <PackageReference Include="IdentityServer4" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
+using IdentitySvr.Entities.Mappers;
 using IdentitySvr.Entities.Pocos;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,7 @@ namespace IdentitySvr.Host.Stores
         public Task<ApiResource> FindApiResourceAsync(string name)
         {
             ApiResourcePoco apiPoco = _repo.FindApiRecourceByNameAsync(name).Result;
-
-            ApiResource Result = ReturnApiResource(apiPoco);
-
+            ApiResource Result = ApiMapper.Map(apiPoco);
             return Task.FromResult<ApiResource>(Result);
         }
 
@@ -33,12 +32,10 @@ namespace IdentitySvr.Host.Stores
             var apis = _repo.FindApiRecourceByScopesAsync(scopeNames).Result; //ApiResourcesConfig.GetApis();
 
             List<ApiResource> result = new List<ApiResource>();
-
             foreach (ApiResourcePoco a in apis)
             {
-                result.Add(ReturnApiResource(a));
+                result.Add(ApiMapper.Map(a));
             }
-
             return Task.FromResult<IEnumerable<ApiResource>>(result);
         }
 
@@ -70,9 +67,10 @@ namespace IdentitySvr.Host.Stores
             // get all api resources
             IEnumerable<ApiResourcePoco> ApiPocos = _repo.GetAllApiRecourcesAsync().Result;
             List<ApiResource> Apiresult = new List<ApiResource>();
-            foreach (ApiResourcePoco ip in ApiPocos)
+            foreach (ApiResourcePoco a in ApiPocos)
             {
-                Apiresult.Add(ReturnApiResource(ip));
+                Apiresult.Add(ApiMapper.Map(a));
+            
             }
 
 
@@ -130,33 +128,7 @@ namespace IdentitySvr.Host.Stores
             }
         }
 
-        private ApiResource ReturnApiResource(ApiResourcePoco a) {
-
-            return new ApiResource {
-                Name=a.Name,
-                ApiSecrets = {new Secret(a.ApiSecrets.Sha512())},
-                Description=a.Description,
-                DisplayName =a.DisplayName,
-                Enabled = a.Enabled,
-                Scopes = ReturnApiScopes(a.ApiScopes),
-                UserClaims ={
-                        JwtClaimTypes.Name,
-                        JwtClaimTypes.Email,
-                        JwtClaimTypes.Role,
-                        JwtClaimTypes.Subject
-                    }
-            };
-        }
-
-        private List<Scope> ReturnApiScopes(List<ApiScopePoco> scopes)
-        {
-            List<Scope> result = new List<Scope>();
-            foreach (ApiScopePoco s in scopes)
-            {
-              result.Add(new Scope(s.Scope));
-            }
-            return result;
-        }
+   
 
         private List<string> ReturnApiUserClaims(List<ClaimPoco> claims)
         {
