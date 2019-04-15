@@ -148,13 +148,15 @@ END
 
 
 
+
+
 /* add client */
 begin 
 INSERT INTO [IdentityServerDB].[dbo].[Clients]
            ([ClientUserName]
            ,[Description]
            ,[Secret]
-           ,[EnumTokenType]
+           ,[AccessTokenType]
            ,[AccessTokenLifetime]
            ,[Role]
            ,[IsActive]
@@ -173,12 +175,14 @@ INSERT INTO [IdentityServerDB].[dbo].[Clients]
 
 end
 
+
+
 /* add API */
 INSERT INTO [IdentityServerDB].[dbo].[Apis]
            ([ApiId]
            ,[DisplayName]
            ,[Description]
-           ,[Secret]
+           ,[ApiSecrets]
            ,[Enabled]
            ,[CreatedBy]
            ,[UpdatedBy])
@@ -190,4 +194,47 @@ INSERT INTO [IdentityServerDB].[dbo].[Apis]
            ,1
            ,'init script'
            ,'init script')
+
+
+ /*add api scopes */
+ INSERT INTO [IdentityServerDB].[dbo].[ApisScopes] ([ApiID],[Scope],[CreatedBy],[UpdatedBy]) VALUES (1,'read','init','init')
+ INSERT INTO [IdentityServerDB].[dbo].[ApisScopes]([ApiID],[Scope],[CreatedBy] ,[UpdatedBy]) VALUES (1,'insert','init','init')
+ INSERT INTO [IdentityServerDB].[dbo].[ApisScopes]([ApiID],[Scope],[CreatedBy] ,[UpdatedBy]) VALUES (1,'update','init','init')
+
+
+/*add Client scopes */
+INSERT INTO [IdentityServerDB].[dbo].[ClientsScopes]([ClientID] ,[ApiScopesId],[CreatedBy],[UpdatedBy])  VALUES (1 ,1 ,'init','init')
+INSERT INTO [IdentityServerDB].[dbo].[ClientsScopes]([ClientID] ,[ApiScopesId],[CreatedBy],[UpdatedBy])  VALUES (1 ,2 ,'init','init')
+INSERT INTO [IdentityServerDB].[dbo].[ClientsScopes]([ClientID] ,[ApiScopesId],[CreatedBy],[UpdatedBy])  VALUES (1 ,3 ,'init','init')
+
+
+
+ /*add user */
+INSERT INTO [IdentityServerDB].[dbo].[Users]
+           ([Username]
+           ,[Password]
+           ,[AllowedClients]
+           ,[GivenName]
+           ,[FamilyName]
+           ,[Role]
+           ,[Email]
+           ,[IsActive]
+           ,[Salt]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('admin'
+           ,'admin123'
+           ,'bankapi'
+           ,'marc'
+           ,'koetsie'
+           ,'admin'
+           ,'marc@emial.com'
+           ,1
+           ,'1111'
+           ,'init'
+           ,'init')
+
+
+
 

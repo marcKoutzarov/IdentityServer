@@ -196,4 +196,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EnumTokenType" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f61f65b1-a362-4e8c-a62b-9ebeedbdfa12" ChangeDateTime="04/15/2019 11:20:10">
+    <Property Name="ElementName" Value="[dbo].[Clients].[EnumTokenType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clients]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccessTokenType" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="44024e5d-e4d3-4058-9482-e77fdd149878" ChangeDateTime="04/15/2019 11:27:52">
+    <Property Name="ElementName" Value="[dbo].[Apis].[Secret]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Apis]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ApiSecrets" />
+  </Operation>
 </Operations>

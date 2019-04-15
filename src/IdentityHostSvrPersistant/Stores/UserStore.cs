@@ -1,12 +1,7 @@
-﻿using IdentityHostSvr.Interfaces;
-using IdentityHostSvr.Interfaces.Repositories;
+﻿using IdentityHostSvr.Interfaces.Repositories;
 using IdentityHostSvr.Interfaces.Stores;
-using IdentityHostSvr.Models;
-using IdentityHostSvr.Repositories.pocos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using IdentitySvr.Entities.Models;
+using IdentitySvr.Entities.Pocos;
 
 namespace IdentityHostSvr.Stores
 {
@@ -28,8 +23,6 @@ namespace IdentityHostSvr.Stores
         {
            return MapUser(_repo.GetUserById(SubjectId));
         }
-
-
 
         private User MapUser(UserPoco p)
         {

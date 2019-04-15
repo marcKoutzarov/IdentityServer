@@ -42,8 +42,7 @@ namespace IdentityHostSvr.Models.Validators
                             return;
                         }
 
-                    }
-                    else {
+                    }else{
                       context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Client Access denied for: " + context.Request.Client.ClientId);
                       return;
                     }

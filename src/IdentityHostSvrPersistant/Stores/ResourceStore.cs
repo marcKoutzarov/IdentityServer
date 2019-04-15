@@ -1,8 +1,8 @@
 ﻿using IdentityHostSvr.Interfaces.Repositories;
-using IdentityHostSvr.Repositories.pocos;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
+using IdentitySvr.Entities.Pocos;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -148,10 +148,10 @@ namespace IdentityHostSvr.Stores
             };
         }
 
-        private List<Scope> ReturnApiScopes(List<ScopePoco> scopes)
+        private List<Scope> ReturnApiScopes(List<ApiScopePoco> scopes)
         {
             List<Scope> result = new List<Scope>();
-            foreach (ScopePoco s in scopes)
+            foreach (ApiScopePoco s in scopes)
             {
               result.Add(new Scope(s.Scope));
             }
@@ -168,6 +168,7 @@ namespace IdentityHostSvr.Stores
             }
             return result;
         }
+
     }
 }
 

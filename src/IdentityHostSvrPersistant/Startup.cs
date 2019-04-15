@@ -1,6 +1,11 @@
-﻿using IdentityHostSvr.Models.Validators;
+﻿using IdentityHostSvr.Interfaces.Repositories;
+using IdentityHostSvr.Interfaces.Stores;
+using IdentityHostSvr.Models.Validators;
+using IdentityHostSvr.Repositories;
+using IdentityHostSvr.Stores;
 using IdentityServer4.Services;
 using IdentityServer4.Validation;
+using IdentitySvr.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +15,6 @@ using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Reflection;
-using IdentityHostSvr.Stores;
-using IdentityHostSvr.Interfaces;
-using IdentityHostSvr.Interfaces.Stores;
-using IdentityHostSvr.Interfaces.Repositories;
-using IdentityHostSvr.Repositories;
 
 namespace IdentityHostSvr
 {

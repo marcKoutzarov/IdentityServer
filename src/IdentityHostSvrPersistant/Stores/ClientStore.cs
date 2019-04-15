@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using IdentityHostSvr.Interfaces.Repositories;
 using IdentityModel;
 using IdentityServer4.Models;
-using System.Security.Claims;
 using IdentityServer4.Stores;
-using IdentityHostSvr.Interfaces.Repositories;
-using IdentityHostSvr.Repositories.pocos;
+using IdentitySvr.Entities.Pocos;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace IdentityHostSvr.Stores
 {
@@ -35,7 +32,7 @@ namespace IdentityHostSvr.Stores
                 AlwaysIncludeUserClaimsInIdToken = true,
                 AccessTokenLifetime = Poco.AccessTokenLifeTime,
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials, 
-                AllowedScopes = GetScopes(Poco.ApiScopes),
+                AllowedScopes = GetClientScopes(Poco.ApiScopes),
               //  Claims
                 
             };
@@ -54,11 +51,11 @@ namespace IdentityHostSvr.Stores
             }
         }
 
-        private List<string> GetScopes(List<ScopePoco> scopes)
+        private List<string> GetClientScopes(List<ClientScopePoco> scopes)
         {
             List<string> results= new List<string>();
 
-            foreach (ScopePoco s in scopes)
+            foreach (ClientScopePoco s in scopes)
             {
                 results.Add(s.Scope);
             }

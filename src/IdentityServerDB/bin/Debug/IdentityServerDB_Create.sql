@@ -280,50 +280,6 @@ CREATE TABLE [dbo].[EnumApiScopes] (
 
 
 GO
-PRINT N'Creating [dbo].[Apis]...';
-
-
-GO
-CREATE TABLE [dbo].[Apis] (
-    [ID]          INT            IDENTITY (1, 1) NOT NULL,
-    [ApiId]       NVARCHAR (100) NOT NULL,
-    [DisplayName] NVARCHAR (50)  NOT NULL,
-    [Description] NVARCHAR (50)  NOT NULL,
-    [Secret]      NVARCHAR (100) NOT NULL,
-    [Enabled]     BIT            NOT NULL,
-    [DateCreated] DATETIME       NOT NULL,
-    [CreatedBy]   NVARCHAR (50)  NOT NULL,
-    [Updated]     DATETIME       NOT NULL,
-    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC),
-    UNIQUE NONCLUSTERED ([ApiId] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[Clients]...';
-
-
-GO
-CREATE TABLE [dbo].[Clients] (
-    [ID]                  INT            IDENTITY (1, 1) NOT NULL,
-    [ClientUserName]      NVARCHAR (100) NOT NULL,
-    [Description]         NVARCHAR (100) NOT NULL,
-    [Secret]              NVARCHAR (MAX) NOT NULL,
-    [EnumTokenType]       NVARCHAR (40)  NOT NULL,
-    [AccessTokenLifetime] INT            NOT NULL,
-    [Role]                NVARCHAR (40)  NOT NULL,
-    [IsActive]            BIT            NOT NULL,
-    [DateCreated]         DATETIME       NOT NULL,
-    [CreatedBy]           NVARCHAR (50)  NOT NULL,
-    [Updated]             DATETIME       NOT NULL,
-    [UpdatedBy]           NVARCHAR (50)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC),
-    UNIQUE NONCLUSTERED ([ClientUserName] ASC)
-);
-
-
-GO
 PRINT N'Creating [dbo].[ApisScopes]...';
 
 
@@ -356,6 +312,50 @@ CREATE TABLE [dbo].[ClientsScopes] (
     [UpdatedBy]   NVARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [UQ_ClientId_ScopeId] UNIQUE NONCLUSTERED ([ClientID] ASC, [ApiScopesId] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Clients]...';
+
+
+GO
+CREATE TABLE [dbo].[Clients] (
+    [ID]                  INT            IDENTITY (1, 1) NOT NULL,
+    [ClientUserName]      NVARCHAR (100) NOT NULL,
+    [Description]         NVARCHAR (100) NOT NULL,
+    [Secret]              NVARCHAR (MAX) NOT NULL,
+    [AccessTokenType]     NVARCHAR (40)  NOT NULL,
+    [AccessTokenLifetime] INT            NOT NULL,
+    [Role]                NVARCHAR (40)  NOT NULL,
+    [IsActive]            BIT            NOT NULL,
+    [DateCreated]         DATETIME       NOT NULL,
+    [CreatedBy]           NVARCHAR (50)  NOT NULL,
+    [Updated]             DATETIME       NOT NULL,
+    [UpdatedBy]           NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    UNIQUE NONCLUSTERED ([ClientUserName] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Apis]...';
+
+
+GO
+CREATE TABLE [dbo].[Apis] (
+    [ID]          INT            IDENTITY (1, 1) NOT NULL,
+    [ApiId]       NVARCHAR (100) NOT NULL,
+    [DisplayName] NVARCHAR (50)  NOT NULL,
+    [Description] NVARCHAR (50)  NOT NULL,
+    [ApiSecrets]  NVARCHAR (100) NOT NULL,
+    [Enabled]     BIT            NOT NULL,
+    [DateCreated] DATETIME       NOT NULL,
+    [CreatedBy]   NVARCHAR (50)  NOT NULL,
+    [Updated]     DATETIME       NOT NULL,
+    [UpdatedBy]   NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    UNIQUE NONCLUSTERED ([ApiId] ASC)
 );
 
 
@@ -495,29 +495,38 @@ ALTER TABLE [dbo].[EnumApiScopes]
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[Apis]...';
+PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
 
 
 GO
-ALTER TABLE [dbo].[Apis]
-    ADD DEFAULT 1 FOR [Enabled];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[Apis]...';
-
-
-GO
-ALTER TABLE [dbo].[Apis]
+ALTER TABLE [dbo].[ApisScopes]
     ADD DEFAULT Getdate() FOR [DateCreated];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[Apis]...';
+PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
 
 
 GO
-ALTER TABLE [dbo].[Apis]
+ALTER TABLE [dbo].[ApisScopes]
+    ADD DEFAULT Getdate() FOR [Updated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[ClientsScopes]...';
+
+
+GO
+ALTER TABLE [dbo].[ClientsScopes]
+    ADD DEFAULT Getdate() FOR [DateCreated];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[ClientsScopes]...';
+
+
+GO
+ALTER TABLE [dbo].[ClientsScopes]
     ADD DEFAULT Getdate() FOR [Updated];
 
 
@@ -549,38 +558,29 @@ ALTER TABLE [dbo].[Clients]
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
+PRINT N'Creating unnamed constraint on [dbo].[Apis]...';
 
 
 GO
-ALTER TABLE [dbo].[ApisScopes]
+ALTER TABLE [dbo].[Apis]
+    ADD DEFAULT 1 FOR [Enabled];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Apis]...';
+
+
+GO
+ALTER TABLE [dbo].[Apis]
     ADD DEFAULT Getdate() FOR [DateCreated];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[ApisScopes]...';
+PRINT N'Creating unnamed constraint on [dbo].[Apis]...';
 
 
 GO
-ALTER TABLE [dbo].[ApisScopes]
-    ADD DEFAULT Getdate() FOR [Updated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[ClientsScopes]...';
-
-
-GO
-ALTER TABLE [dbo].[ClientsScopes]
-    ADD DEFAULT Getdate() FOR [DateCreated];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[ClientsScopes]...';
-
-
-GO
-ALTER TABLE [dbo].[ClientsScopes]
+ALTER TABLE [dbo].[Apis]
     ADD DEFAULT Getdate() FOR [Updated];
 
 
@@ -591,24 +591,6 @@ PRINT N'Creating [dbo].[FK_Clients_EnumUsertRoles]...';
 GO
 ALTER TABLE [dbo].[Users]
     ADD CONSTRAINT [FK_Clients_EnumUsertRoles] FOREIGN KEY ([Role]) REFERENCES [dbo].[EnumUserRoles] ([Role]);
-
-
-GO
-PRINT N'Creating [dbo].[FK_Clients_EnumTokenTypes]...';
-
-
-GO
-ALTER TABLE [dbo].[Clients]
-    ADD CONSTRAINT [FK_Clients_EnumTokenTypes] FOREIGN KEY ([EnumTokenType]) REFERENCES [dbo].[EnumTokenTypes] ([Type]);
-
-
-GO
-PRINT N'Creating [dbo].[FK_Clients_EnumClientRoles]...';
-
-
-GO
-ALTER TABLE [dbo].[Clients]
-    ADD CONSTRAINT [FK_Clients_EnumClientRoles] FOREIGN KEY ([Role]) REFERENCES [dbo].[EnumClientRoles] ([Role]);
 
 
 GO
@@ -647,6 +629,55 @@ ALTER TABLE [dbo].[ClientsScopes]
     ADD CONSTRAINT [FK_ClientsScopes_ApiScopes] FOREIGN KEY ([ApiScopesId]) REFERENCES [dbo].[ApisScopes] ([ID]);
 
 
+GO
+PRINT N'Creating [dbo].[FK_Clients_EnumTokenTypes]...';
+
+
+GO
+ALTER TABLE [dbo].[Clients]
+    ADD CONSTRAINT [FK_Clients_EnumTokenTypes] FOREIGN KEY ([AccessTokenType]) REFERENCES [dbo].[EnumTokenTypes] ([Type]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Clients_EnumClientRoles]...';
+
+
+GO
+ALTER TABLE [dbo].[Clients]
+    ADD CONSTRAINT [FK_Clients_EnumClientRoles] FOREIGN KEY ([Role]) REFERENCES [dbo].[EnumClientRoles] ([Role]);
+
+
+GO
+PRINT N'Creating [dbo].[vw_ClientScopes]...';
+
+
+GO
+CREATE VIEW [dbo].[vw_ClientScopes]
+AS 
+
+SELECT 
+dbo.ClientsScopes.ID AS ScopeId, 
+dbo.Clients.ClientUserName AS Client, 
+dbo.Apis.ApiId AS Api, 
+dbo.Apis.ApiId + N'.' + dbo.ApisScopes.Scope AS Scope
+FROM   
+dbo.ClientsScopes INNER JOIN
+dbo.Clients ON dbo.ClientsScopes.ClientID = dbo.Clients.ID INNER JOIN
+dbo.ApisScopes ON dbo.ClientsScopes.ApiScopesId = dbo.ApisScopes.ID INNER JOIN
+dbo.Apis ON dbo.ApisScopes.ApiID = dbo.Apis.ID
+GO
+PRINT N'Creating [dbo].[vw_ApiScopes]...';
+
+
+GO
+CREATE VIEW [dbo].[vw_ApiScopes]
+	AS 
+	SELECT 
+	dbo.ApisScopes.ID AS ScopeId, 
+	dbo.Apis.ApiId AS Api, 
+	dbo.Apis.ApiId + N'.' + dbo.ApisScopes.Scope AS Scope
+	FROM 
+	dbo.Apis INNER JOIN dbo.ApisScopes ON dbo.Apis.ID = dbo.ApisScopes.ApiID
 GO
 -- Refactoring step to update target server with deployed transaction logs
 
@@ -712,6 +743,10 @@ IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey
 INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('b924552d-55bc-4a4e-8c5e-9304f7e987e9')
 IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'cc9badd3-a018-40a7-aee4-e1f64eeadbce')
 INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('cc9badd3-a018-40a7-aee4-e1f64eeadbce')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'f61f65b1-a362-4e8c-a62b-9ebeedbdfa12')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('f61f65b1-a362-4e8c-a62b-9ebeedbdfa12')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '44024e5d-e4d3-4058-9482-e77fdd149878')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('44024e5d-e4d3-4058-9482-e77fdd149878')
 
 GO
 
@@ -866,13 +901,15 @@ END
 
 
 
+
+
 /* add client */
 begin 
 INSERT INTO [IdentityServerDB].[dbo].[Clients]
            ([ClientUserName]
            ,[Description]
            ,[Secret]
-           ,[EnumTokenType]
+           ,[AccessTokenType]
            ,[AccessTokenLifetime]
            ,[Role]
            ,[IsActive]
@@ -891,12 +928,14 @@ INSERT INTO [IdentityServerDB].[dbo].[Clients]
 
 end
 
+
+
 /* add API */
 INSERT INTO [IdentityServerDB].[dbo].[Apis]
            ([ApiId]
            ,[DisplayName]
            ,[Description]
-           ,[Secret]
+           ,[ApiSecrets]
            ,[Enabled]
            ,[CreatedBy]
            ,[UpdatedBy])
@@ -908,6 +947,49 @@ INSERT INTO [IdentityServerDB].[dbo].[Apis]
            ,1
            ,'init script'
            ,'init script')
+
+
+ /*add api scopes */
+ INSERT INTO [IdentityServerDB].[dbo].[ApisScopes] ([ApiID],[Scope],[CreatedBy],[UpdatedBy]) VALUES (1,'read','init','init')
+ INSERT INTO [IdentityServerDB].[dbo].[ApisScopes]([ApiID],[Scope],[CreatedBy] ,[UpdatedBy]) VALUES (1,'insert','init','init')
+ INSERT INTO [IdentityServerDB].[dbo].[ApisScopes]([ApiID],[Scope],[CreatedBy] ,[UpdatedBy]) VALUES (1,'update','init','init')
+
+
+/*add Client scopes */
+INSERT INTO [IdentityServerDB].[dbo].[ClientsScopes]([ClientID] ,[ApiScopesId],[CreatedBy],[UpdatedBy])  VALUES (1 ,1 ,'init','init')
+INSERT INTO [IdentityServerDB].[dbo].[ClientsScopes]([ClientID] ,[ApiScopesId],[CreatedBy],[UpdatedBy])  VALUES (1 ,2 ,'init','init')
+INSERT INTO [IdentityServerDB].[dbo].[ClientsScopes]([ClientID] ,[ApiScopesId],[CreatedBy],[UpdatedBy])  VALUES (1 ,3 ,'init','init')
+
+
+
+ /*add user */
+INSERT INTO [IdentityServerDB].[dbo].[Users]
+           ([Username]
+           ,[Password]
+           ,[AllowedClients]
+           ,[GivenName]
+           ,[FamilyName]
+           ,[Role]
+           ,[Email]
+           ,[IsActive]
+           ,[Salt]
+           ,[CreatedBy]
+           ,[UpdatedBy])
+     VALUES
+           ('admin'
+           ,'admin123'
+           ,'bankapi'
+           ,'marc'
+           ,'koetsie'
+           ,'admin'
+           ,'marc@emial.com'
+           ,1
+           ,'1111'
+           ,'init'
+           ,'init')
+
+
+
 
 GO
 

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\IdentitySvr.Entities.csproj" />
+    <ProjectReference Include="..\IdentitySvr.Core\IdentitySvr.Core.csproj" />
+    <ProjectReference Include="..\IdentitySvr.Interfaces\IdentitySvr.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
