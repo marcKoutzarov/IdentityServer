@@ -5,3 +5,11 @@ src/IdentityHostSvrPersistant/bin/
 src/IdentityHostSvrPersistant/obj/
 src/IdentityServerDB/obj/
 src/IdentityServerDB/bin/Debug/IdentityServerDB.dacpac
+src/Entities/obj/
+src/IdentitySvr.Core/obj/
+src/IdentitySvr.Interfaces/obj/
+src/IdentitySvr.Interfaces/bin/Debug/netcoreapp2.2/IdentitySvr.Interfaces.deps.json
+src/IdentitySvr.Repositories/obj/
+src/IdentitySvr.Core/bin/
+src/Entities/bin/Debug/netcoreapp2.2/IdentitySvr.Entities.deps.json
+src/Entities/bin/Debug/netcoreapp2.2/Entities.deps.json
