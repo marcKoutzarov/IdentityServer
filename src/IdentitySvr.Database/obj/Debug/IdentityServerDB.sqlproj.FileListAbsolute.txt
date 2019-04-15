@@ -1,0 +1,9 @@
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\bin\Debug\IdentityServerDB.dacpac
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\bin\Debug\IdentityServerDB.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\bin\Debug\IdentityServerDB.pdb
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\obj\Debug\Model.xml
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\obj\Debug\refactor.xml
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\obj\Debug\postdeploy.sql
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\obj\Debug\predeploy.sql
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\obj\Debug\IdentityServerDB.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentityServerDB\obj\Debug\IdentityServerDB.pdb

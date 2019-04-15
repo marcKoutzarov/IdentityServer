@@ -1,0 +1,10 @@
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\bin\Debug\IdentitySvr.Database.dacpac
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\bin\Debug\IdentityServerDB.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\bin\Debug\IdentityServerDB.pdb
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\Model.xml
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\refactor.xml
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\postdeploy.sql
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\predeploy.sql
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\IdentityServerDB.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\IdentityServerDB.pdb
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Database\obj\Debug\IdentitySvr.Database.sqlprojAssemblyReference.cache

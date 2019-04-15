@@ -1,0 +1,330 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Host\\IdentitySvr.Host.csproj": {}
+  },
+  "projects": {
+    "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\IdentitySvr.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\IdentitySvr.Core.csproj",
+        "projectName": "IdentitySvr.Core",
+        "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\IdentitySvr.Core.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "IdentityModel": {
+              "target": "Package",
+              "version": "[3.10.7, )"
+            },
+            "IdentityServer4.Storage": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj",
+        "projectName": "IdentitySvr.Entities",
+        "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "IdentityModel": {
+              "target": "Package",
+              "version": "[3.10.7, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Host\\IdentitySvr.Host.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Host\\IdentitySvr.Host.csproj",
+        "projectName": "IdentitySvr.Host",
+        "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Host\\IdentitySvr.Host.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Host\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\IdentitySvr.Core.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\IdentitySvr.Core.csproj"
+              },
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj"
+              },
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\IdentitySvr.Interfaces.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\IdentitySvr.Interfaces.csproj"
+              },
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Repositories\\IdentitySvr.Repositories.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Repositories\\IdentitySvr.Repositories.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "IdentityServer4": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\IdentitySvr.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\IdentitySvr.Interfaces.csproj",
+        "projectName": "IdentitySvr.Interfaces",
+        "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\IdentitySvr.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Repositories\\IdentitySvr.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Repositories\\IdentitySvr.Repositories.csproj",
+        "projectName": "IdentitySvr.Repositories",
+        "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Repositories\\IdentitySvr.Repositories.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Repositories\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\IdentitySvr.Core.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Core\\IdentitySvr.Core.csproj"
+              },
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Entities\\IdentitySvr.Entities.csproj"
+              },
+              "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\IdentitySvr.Interfaces.csproj": {
+                "projectPath": "E:\\GITHUB_REPOS\\MyGithubRepos\\IdentityServer\\src\\IdentitySvr.Interfaces\\IdentitySvr.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

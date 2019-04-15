@@ -1,0 +1,17 @@
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\bin\Debug\netcoreapp2.2\IdentitySvr.Entities.deps.json
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\bin\Debug\netcoreapp2.2\IdentitySvr.Entities.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\bin\Debug\netcoreapp2.2\IdentitySvr.Entities.pdb
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.csproj.CoreCompileInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.AssemblyInfoInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.AssemblyInfo.cs
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.pdb
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.csprojAssemblyReference.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\bin\Debug\netcoreapp2.2\IdentitySvr.Entities.deps.json
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\bin\Debug\netcoreapp2.2\IdentitySvr.Entities.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\bin\Debug\netcoreapp2.2\IdentitySvr.Entities.pdb
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.csproj.CoreCompileInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.AssemblyInfoInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.AssemblyInfo.cs
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Entities\obj\Debug\netcoreapp2.2\IdentitySvr.Entities.pdb

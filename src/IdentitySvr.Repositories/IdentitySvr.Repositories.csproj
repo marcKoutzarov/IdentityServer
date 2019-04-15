@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities\IdentitySvr.Entities.csproj" />
     <ProjectReference Include="..\IdentitySvr.Core\IdentitySvr.Core.csproj" />
+    <ProjectReference Include="..\IdentitySvr.Entities\IdentitySvr.Entities.csproj" />
     <ProjectReference Include="..\IdentitySvr.Interfaces\IdentitySvr.Interfaces.csproj" />
   </ItemGroup>
 

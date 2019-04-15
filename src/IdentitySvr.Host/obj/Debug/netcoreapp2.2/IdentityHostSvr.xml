@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IdentityHostSvr</name>
+    </assembly>
+    <members>
+        <member name="T:IdentityHostSvr.Controllers.PasswordGeneratorController">
+            <summary>
+            Generated a new Sha516 password
+            </summary>
+        </member>
+        <member name="M:IdentityHostSvr.Controllers.PasswordGeneratorController.Get(IdentityHostSvr.Controllers.PasswordGeneratorController.UserCredentials)">
+            <summary>
+            
+            </summary>
+            <param name="cred">password and optional a salt</param>
+            <returns>Hashed password</returns>
+        </member>
+    </members>
+</doc>

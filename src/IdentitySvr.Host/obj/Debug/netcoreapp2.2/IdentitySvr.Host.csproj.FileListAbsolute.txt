@@ -1,0 +1,6 @@
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Host\obj\Debug\netcoreapp2.2\IdentitySvr.Host.csprojAssemblyReference.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Host\obj\Debug\netcoreapp2.2\IdentitySvr.Host.csproj.CoreCompileInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Host\obj\Debug\netcoreapp2.2\IdentitySvr.Host.RazorAssemblyInfo.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Host\obj\Debug\netcoreapp2.2\IdentitySvr.Host.RazorAssemblyInfo.cs
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Host\obj\Debug\netcoreapp2.2\IdentitySvr.Host.AssemblyInfoInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\IdentitySvr.Host\obj\Debug\netcoreapp2.2\IdentitySvr.Host.AssemblyInfo.cs

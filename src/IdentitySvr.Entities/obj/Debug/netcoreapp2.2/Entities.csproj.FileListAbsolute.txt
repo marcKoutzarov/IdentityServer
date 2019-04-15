@@ -1,0 +1,5 @@
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\bin\Debug\netcoreapp2.2\Entities.deps.json
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\bin\Debug\netcoreapp2.2\Entities.dll
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\Entities.csproj.CoreCompileInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\Entities.AssemblyInfoInputs.cache
+E:\GITHUB_REPOS\MyGithubRepos\IdentityServer\src\Entities\obj\Debug\netcoreapp2.2\Entities.AssemblyInfo.cs
