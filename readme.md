@@ -1,12 +1,21 @@
 IDENTITY SERVER 4 .net Core
 ===================================
 
-Project contains 2 sollutions. 
+Identity Server4 Sample project for persistent storage. 
 
-1. An in-memory implementation of IdentityServer4.
-2. A pesistant storage implementation of IdentityServer4 (in proggress).
+The testClient requests a reference Token using a ClientResource and a User. 
+Then gets the Claims of the User Calling an Api Resource. 
 
-Both sollutions include one test-client: requesting a referance token (RequestClientCredentialsToken) from the server and swapping it for a claim token (IntrospectionResponse) using the Api resource. 
+An ORM is not implemented , the data still is pulled from Memory. So your free to write your own Persistante storage logic using any orm.
 
-Sample database project (IdentityServerDB) contains the minimal schema to store all clients, claims,scopes & recources. The database minimalistic and is much smaller then the official Identity server schema.
 
+- Projects included in the solution: 
+
+ IdentitySvr.Core (helper classes)
+ IdentitySvr.Database (Database schema which the poco's in the project rely on)
+ IdentitySvr.Entities (project containing the used poco's models and DTO's)
+ IdentitySvr.Host  (IDENTITY SERVER 4  implementation)
+ IdentitySvr.IdentityServerUI (work in progress. UI to manage the Identity server )
+ IdentitySvr.Interfaces
+ IdentitySvr.Repositories (Still use mock data. U can implement Any desired ORM)
+ TestClient (Console application for testing)
