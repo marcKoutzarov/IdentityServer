@@ -17,3 +17,4 @@ src/IdentitySvr.Host/bin/
 src/IdentitySvr.IdentityServerUI/bin/
 src/IdentitySvr.IdentityServerUI/obj/
 
+src/IdentitySvr.Database/IdentitySvr.Database.dbmdl
