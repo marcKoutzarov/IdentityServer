@@ -19,3 +19,10 @@ Projects included in the solution:
  - IdentitySvr.Interfaces
  - IdentitySvr.Repositories (Still use mock data. U can implement Any desired ORM)
  - TestClient (Console application for testing)
+ 
+ 
+ 
+ DEMO URL:
+ you can test  drive the front-end UI demo on azure here: (in progress)
+ 
+https://identitysvridentityserverui20190416041748.azurewebsites.net/
