@@ -21,7 +21,9 @@ namespace IdentitySvr.Interfaces.Repositories
         Task<ClientPoco> FindClientByUsernameAsync(string clientName);
 
         Task<List<ClientScopePoco>> FindClientScopesAsync(string clientName);
-       
+
+        Task<List<ClientPoco>> GetAllClientsAsync(string filter="");
+
         Task<List<ApiScopePoco>> FindApiScopesAsync(string apiName);
     }
 }

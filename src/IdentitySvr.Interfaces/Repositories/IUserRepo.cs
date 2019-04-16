@@ -13,5 +13,7 @@ namespace IdentitySvr.Interfaces.Repositories
 
         UserPoco GetUserById(string Id);
 
+        Task<IEnumerable<UserPoco>>  GetUsersAsync(string filter ="");
+
     }
 }

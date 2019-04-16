@@ -1,0 +1,67 @@
+﻿
+@model IEnumerable<IdentitySvr.Entities.Pocos.UserPoco>
+@{
+    ViewData["Title"] = "Users";
+}
+<h3>@ViewData["Title"]</h3>
+<p></p>
+
+<p></p>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Users">Add User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Users">Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.SubjectId)</th>
+            <th>@Html.DisplayNameFor(model => model.Username)</th>
+            <th>@Html.DisplayNameFor(model => model.Salt)</th>
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.Role)</th>
+            <th>@Html.DisplayNameFor(model => model.AllowedClients)</th>
+            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+            <th></th>
+        </tr>
+    </thead>
+   
+    <tbody>
+     
+        
+        
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.SubjectId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Username)</td>
+            <td>@Html.DisplayFor(modelItem => item.Salt)</td>
+            <td>*****</td>
+            <td>@Html.DisplayFor(modelItem => item.Role)</td>
+            <td>@Html.DisplayFor(modelItem => item.AllowedClients)</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+            <td><a asp-action="Edit" asp-route-id="@item.SubjectId">Edit</a></td>
+        </tr>
+        }
+    
+    </tbody>
+</table>
