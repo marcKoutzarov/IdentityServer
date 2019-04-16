@@ -1,7 +1,8 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
+﻿using IdentitySvr.Interfaces.Repositories;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
+using IdentitySvr.Entities.Mappers;
 using IdentitySvr.Entities.Pocos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,47 +20,9 @@ namespace IdentitySvr.Host.Stores
 
         public Task<Client> FindClientByIdAsync(string clientId)
         {
-            var Poco = _repo.FindClientByUsernameAsync(clientId).Result;
+            var poco = _repo.FindClientByUsernameAsync(clientId).Result;
 
-            Client c = new Client
-            {
-                ClientId = Poco.ClientUserName,
-                ClientName = Poco.ClientUserName,
-                Description = Poco.Description,
-                ClientSecrets = {new Secret((Poco.Secret).ToSha512()) }, 
-                AccessTokenType = GetTokenType(Poco.AccessTokenType), 
-                AlwaysSendClientClaims = true,
-                AlwaysIncludeUserClaimsInIdToken = true,
-                AccessTokenLifetime = Poco.AccessTokenLifeTime,
-                AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials, 
-                AllowedScopes = GetClientScopes(Poco.ApiScopes),
-              //  Claims
-                
-            };
-
-            return Task.FromResult(c);
-        }
-
-        private AccessTokenType GetTokenType(string type) {
-            if (type== "REF")
-            {
-                return AccessTokenType.Reference;
-            }
-            else
-            {
-                return AccessTokenType.Jwt;
-            }
-        }
-
-        private List<string> GetClientScopes(List<ClientScopePoco> scopes)
-        {
-            List<string> results= new List<string>();
-
-            foreach (ClientScopePoco s in scopes)
-            {
-                results.Add(s.Scope);
-            }
-            return results;
+            return Task.FromResult(ClientMapper.Map(poco));
         }
     }
 }

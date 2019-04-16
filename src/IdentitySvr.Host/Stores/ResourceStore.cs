@@ -1,4 +1,4 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
+﻿using IdentitySvr.Interfaces.Repositories;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
@@ -12,7 +12,7 @@ namespace IdentitySvr.Host.Stores
 {
     public class ResourceStore : IResourceStore
     {
-        private IResourcesRepo _repo;
+        private readonly IResourcesRepo _repo;
 
         public ResourceStore(IResourcesRepo ResourceRepo)
         {

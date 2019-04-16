@@ -1,6 +1,6 @@
 ﻿using IdentitySvr.Entities.Models;
 
-namespace IdentityHostSvr.Interfaces.Stores
+namespace IdentitySvr.Interfaces.Stores
 {
     public interface IUserStore
     {

@@ -1,4 +1,4 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
+﻿using IdentitySvr.Interfaces.Repositories;
 using IdentitySvr.Entities.Pocos;
 using IdentitySvr.Repositories.InMemoryData;
 using System.Collections.Generic;

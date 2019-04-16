@@ -3,7 +3,7 @@ using IdentitySvr.Entities.Pocos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace IdentityHostSvr.Interfaces.Repositories
+namespace IdentitySvr.Interfaces.Repositories
 {
     public interface IResourcesRepo
     {

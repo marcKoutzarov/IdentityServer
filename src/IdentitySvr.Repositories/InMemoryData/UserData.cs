@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace IdentityHostSvr.Repositories.InMemoryData
+namespace IdentitySvr.Repositories.InMemoryData
 {
     public class UserData
     {

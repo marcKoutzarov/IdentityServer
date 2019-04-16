@@ -4,7 +4,10 @@ using System.Text;
 
 namespace IdentitySvr.Entities.Mappers
 {
-    class IdentityMapper
+    public static class IdentityMapper
     {
+        // identity resources are not stored in the database. 
+        // this class is for later. 
+
     }
 }

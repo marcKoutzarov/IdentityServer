@@ -1,4 +1,4 @@
-﻿using IdentityHostSvr.Interfaces.Stores;
+﻿using IdentitySvr.Interfaces.Stores;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using System;

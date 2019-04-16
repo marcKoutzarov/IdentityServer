@@ -18,6 +18,7 @@ namespace IdentitySvr.Repositories.InMemoryData
         public static IEnumerable<ApiResourcePoco> GetApiRecourceByScopesAsync(IEnumerable<string> scopeNames)
         {
             // need to implement scopenames filter later
+            var len = scopeNames.Count();
             return GetApis();
         }
 

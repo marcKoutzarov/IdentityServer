@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityHostSvr.Interfaces.Repositories
+namespace IdentitySvr.Interfaces.Repositories
 {
    public interface IGrantsRepo
     {

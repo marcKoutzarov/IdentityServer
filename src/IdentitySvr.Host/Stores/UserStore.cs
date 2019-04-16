@@ -1,13 +1,14 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
-using IdentityHostSvr.Interfaces.Stores;
-using IdentitySvr.Entities.Models;
+﻿using IdentitySvr.Entities.Models;
 using IdentitySvr.Entities.Pocos;
+using IdentitySvr.Entities.Mappers;
+using IdentitySvr.Interfaces.Stores;
+using IdentitySvr.Interfaces.Repositories;
 
 namespace IdentitySvr.Host.Stores
 {
     public class UserStore : IUserStore
     {
-        private IUserRepo _repo;
+        private readonly IUserRepo _repo;
 
         public UserStore(IUserRepo UserRepo)
         {
@@ -16,34 +17,16 @@ namespace IdentitySvr.Host.Stores
 
         public User GetUser(string Username)
         {
-           return MapUser(_repo.GetUser(Username));
+        
+           
+           return UserMapper.Map(_repo.GetUser(Username));
         }
 
         public User GetUserBySubject(string SubjectId)
         {
-           return MapUser(_repo.GetUserById(SubjectId));
+           return UserMapper.Map(_repo.GetUserById(SubjectId));
         }
 
-        private User MapUser(UserPoco p)
-        {
-            User user = new User
-            {
-                SubjectId = p.SubjectId,
-                Username = p.Username,
-                Salt = p.Salt,
-                Email = p.Email,
-                FamilyName = p.FamilyName,
-                GivenName = p.GivenName,
-                Password = p.Password,
-                IsActive = p.IsActive,
-                Role = p.Role,
-                ProviderName = p.ProviderName,
-                ProviderSubjectId = p.ProviderSubjectId
-            };
-
-            return user;
-
-        }
 
 
     }

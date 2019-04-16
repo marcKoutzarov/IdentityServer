@@ -1,4 +1,4 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
+﻿using IdentitySvr.Interfaces.Repositories;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using IdentitySvr.Entities.Pocos;

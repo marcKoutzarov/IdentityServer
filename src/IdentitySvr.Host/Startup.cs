@@ -1,6 +1,6 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
-using IdentityHostSvr.Interfaces.Stores;
-using IdentityHostSvr.Repositories;
+﻿using IdentitySvr.Interfaces.Repositories;
+using IdentitySvr.Interfaces.Stores;
+using IdentitySvr.Repositories;
 using IdentityServer4.Services;
 using IdentityServer4.Validation;
 using IdentitySvr.Host.Stores;

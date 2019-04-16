@@ -1,8 +1,8 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
-using IdentityHostSvr.Repositories.InMemoryData;
+﻿using IdentitySvr.Interfaces.Repositories;
+using IdentitySvr.Repositories.InMemoryData;
 using IdentitySvr.Entities.Pocos;
 
-namespace IdentityHostSvr.Repositories
+namespace IdentitySvr.Repositories
 {
     public class UserRepo : IUserRepo
     {

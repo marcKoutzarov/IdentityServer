@@ -1,11 +1,11 @@
-﻿using IdentityHostSvr.Interfaces.Repositories;
+﻿using IdentitySvr.Interfaces.Repositories;
 using IdentitySvr.Entities.Pocos;
 using IdentitySvr.Repositories.InMemoryData;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace IdentityHostSvr.Repositories
+namespace IdentitySvr.Repositories
 {
     public class ResourceRepo : IResourcesRepo
     {
