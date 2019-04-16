@@ -4,6 +4,7 @@ using IdentitySvr.Repositories.InMemoryData;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace IdentitySvr.Repositories
 {
@@ -44,6 +45,12 @@ namespace IdentitySvr.Repositories
         public Task<ClientPoco> FindClientByUsernameAsync(string clientName)
         {
             return Task.FromResult(ResourceData.GetClients(clientName));
+        }
+
+        public Task<List<ClientPoco>> GetAllClientsAsync(string filter="")
+        {
+            IEnumerable<ClientPoco> clients = ResourceData.GetClients();
+            return Task.FromResult(clients.ToList());
         }
 
         // -------CLIENT SCOPES-------------

@@ -8,14 +8,16 @@ using IdentitySvr.IdentityServerUI.Models;
 
 namespace IdentitySvr.IdentityServerUI.Controllers
 {
-    public class ResourcesController : Controller
-    {  
-        public IActionResult Resources()
+    public class TestController : Controller
+    {
+
+        public IActionResult Test()
         {
-            var repo = new IdentitySvr.Repositories.ResourceRepo();
-            var apis = repo.GetAllApiRecourcesAsync().Result;
-            return View(apis);
+            return View();
         }
+
+
+
 
 
 

@@ -13,7 +13,9 @@ namespace IdentitySvr.IdentityServerUI.Controllers
 
         public IActionResult Clients()
         {
-            return View();
+            var repo = new IdentitySvr.Repositories.ResourceRepo();
+            var clients = repo.GetAllClientsAsync("").Result;
+            return View(clients);
         }
 
 
