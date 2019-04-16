@@ -39,7 +39,7 @@ namespace IdentitySvr.Repositories.InMemoryData
                     ProviderName ="" ,
                     ProviderSubjectId ="",
                     Role ="Rolebob",
-                    AllowedClients="Client1",
+                    AllowedClients="Client1;client2",
                     DateCreated=new DateTime().Date,
                     DateUpdated=new DateTime().Date,
                     CreatedBy ="test",

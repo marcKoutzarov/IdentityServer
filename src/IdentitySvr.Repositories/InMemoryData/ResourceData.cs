@@ -59,10 +59,9 @@ namespace IdentitySvr.Repositories.InMemoryData
                         new ClientScopePoco{ScopeId=4, Client="Client1",  Api="api2", Scope="api2.read"},
                         new ClientScopePoco{ScopeId=5, Client="Client1",  Api="api2", Scope="api2.insert"},
                         new ClientScopePoco{ScopeId=6, Client="Client1",  Api="api2", Scope="api2.update"},
-                        //new ScopePoco{Id=7,  Api="api3", Scope="api3.read"},
-                        //new ScopePoco{Id=8,  Api="api3", Scope="api3.insert"},
-                        //new ScopePoco{Id=9,  Api="api3", Scope="api3.update"}
+                       
                     }
+                    
                 },
                 new ClientPoco {
                     Id=1,

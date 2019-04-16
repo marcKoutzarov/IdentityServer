@@ -4,7 +4,7 @@ using IdentityServer4.Validation;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-
+using IdentitySvr.Core;
 
 namespace IdentitySvr.Host.Validators
 {
@@ -38,20 +38,20 @@ namespace IdentitySvr.Host.Validators
 
                         if (cN.Length == 0)
                         {
-                            context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Client Access denied for: " + context.Request.Client.ClientId);
+                            context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "User is denied Client Access for Client: " + context.Request.Client.ClientId);
                             return;
                         }
 
                     }else{
-                      context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "Client Access denied for: " + context.Request.Client.ClientId);
-                      return;
+                        context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "User is denied Client Access for Client: " + context.Request.Client.ClientId);
+                        return;
                     }
-                   
+
 
 
 
                     //check if password match
-                    if (user.Password == CreateHashedPasword(context.Password, user.Salt))
+                    if (user.Password == PasswordGenerator.CreateNew(context.Password, user.Salt))
                     {
                         //set the result
                         context.Result = new GrantValidationResult(
@@ -76,15 +76,6 @@ namespace IdentitySvr.Host.Validators
                 return; //i added this
             }
 
-        }
-
-        private static string CreateHashedPasword(string password, string salt)
-        {
-            var StrToHash = password + salt;
-
-            var result = new Secret(StrToHash.Sha512());
-
-            return result.Value;
         }
     }
 }

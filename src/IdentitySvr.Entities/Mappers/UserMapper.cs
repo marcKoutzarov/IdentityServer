@@ -12,13 +12,14 @@ namespace IdentitySvr.Entities.Mappers
             {
                 SubjectId = p.SubjectId,
                 Username = p.Username,
+                Password = p.Password,
                 Salt = p.Salt,
                 Email = p.Email,
                 FamilyName = p.FamilyName,
                 GivenName = p.GivenName,
-                Password = p.Password,
                 IsActive = p.IsActive,
                 Role = p.Role,
+                AllowedClients= p.AllowedClients,
                 ProviderName = p.ProviderName,
                 ProviderSubjectId = p.ProviderSubjectId
             };
@@ -31,13 +32,14 @@ namespace IdentitySvr.Entities.Mappers
             {
                 SubjectId = p.SubjectId,
                 Username = p.Username,
+                Password = p.Password,
                 Salt = p.Salt,
                 Email = p.Email,
                 FamilyName = p.FamilyName,
                 GivenName = p.GivenName,
-                Password = p.Password,
                 IsActive = p.IsActive,
                 Role = p.Role,
+                AllowedClients = p.AllowedClients,
                 ProviderName = p.ProviderName,
                 ProviderSubjectId = p.ProviderSubjectId
             };

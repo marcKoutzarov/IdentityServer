@@ -32,27 +32,29 @@ namespace TestClient
         AuthenticateClient1:
 
             //---------------------------------------------------------
-            Console.WriteLine("authenicate a  Client (1) with referance token");
-
-            //tokenResponse = RequestClientCredentialsToken_Async("Client1", "Client1Secret").Result;
+            Console.WriteLine("Authenicating: User bob using ClientResource: Client1");
+            Console.WriteLine("\n\n");
             tokenResponse = RequestPasswordToken_Async("Client1", "Client1Secret", "bob", "password").Result;
+            //tokenResponse = RequestClientCredentialsToken_Async("Client1", "Client1Secret").Result;
 
             if (tokenResponse.IsError)
             {
-                Console.WriteLine(tokenResponse.Error);
-                Console.WriteLine(tokenResponse.Json);
-                Console.WriteLine("Press Key to exit....");
+                Console.WriteLine("Error getting tokenResponse...");
+                Console.WriteLine("Error: \n\n" + tokenResponse.Error);
+                Console.WriteLine("Json : \n\n" + tokenResponse.Json);
                 Console.ReadKey();
+                goto AuthenticateClient1;
             }
             else
             {
-                Console.WriteLine("Client 1 referance token: \n\n");
+                Console.WriteLine("Received referance token: \n\n");
                 Console.WriteLine(tokenResponse.Json);
                 Console.WriteLine("\n\n");
-                Console.WriteLine("making a IntrospectTokenRequest to get claims");
+                Console.WriteLine("Making a IntrospectTokenRequest to get user claims..");
+
 
             checkToken:
-                IntroSpectionResponse = IntrospectToken_Async(tokenResponse.AccessToken).Result;
+                IntroSpectionResponse = IntrospectToken_Async(tokenResponse.AccessToken, "api2", "Api2Secret").Result;
                 Console.WriteLine(IntroSpectionResponse.Json);
                 Console.WriteLine("\n\n");
                 Console.WriteLine("Press C to Validate the Token.");
@@ -134,23 +136,7 @@ namespace TestClient
             }
            
         }
-
-
-        private static string CreateHashedPasword(string password, string salt)
-        {
-            var StrToHash = password + salt;
-
-            var result = new Secret(StrToHash.ToSha512());
-
-            return result.Value;
-
-        }
-
-
-
-
-
-
+               
         /// <summary>
         /// Login as a USER (bob) using client 1 returns a JTW token
         /// </summary>
@@ -200,10 +186,10 @@ namespace TestClient
 
 
         /// <summary>
-        /// Login as a client (Client2) (returns a referance token)
+        /// Get Claims using api 
         /// </summary>
         /// <returns></returns>
-        private static async Task<IntrospectionResponse> IntrospectToken_Async(string refToken)
+        private static async Task<IntrospectionResponse> IntrospectToken_Async(string refToken, string apiName, string ApiSecret)
         {
             var disco = await _discoCache.GetAsync();
             if (disco.IsError) throw new Exception(disco.Error);
@@ -213,8 +199,8 @@ namespace TestClient
             var result = await client.IntrospectTokenAsync(new TokenIntrospectionRequest
             {
                 Address = disco.IntrospectionEndpoint,
-                ClientId = "api3",
-                ClientSecret = "Api3Secret",
+                ClientId = apiName,
+                ClientSecret = ApiSecret, //"Api3Secret",
                 Token = refToken
             });
 

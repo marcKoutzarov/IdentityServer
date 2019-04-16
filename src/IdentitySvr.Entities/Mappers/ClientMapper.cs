@@ -21,12 +21,11 @@ namespace IdentitySvr.Entities.Mappers
                 ClientId = poco.ClientUserName,
                 ClientName = poco.ClientUserName,
                 Description = poco.Description,
-                ClientSecrets = {new Secret((poco.Secret).ToSha512())},
+                ClientSecrets = {new Secret((poco.Secret).Sha256())},
                 AccessTokenType = MapTokenType(poco.AccessTokenType),
                 AccessTokenLifetime = poco.AccessTokenLifeTime,
                 AllowedScopes = MapClientScopes(poco.ApiScopes),
-              
-                // TODO need to add userclaims here
+               // TODO need to add userclaims here
                 //  Claims
             };
 

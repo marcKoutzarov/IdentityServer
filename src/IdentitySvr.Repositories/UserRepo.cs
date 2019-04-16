@@ -17,14 +17,5 @@ namespace IdentitySvr.Repositories
             return UserData.GetUsers(i);
         }
 
-        UserPoco IUserRepo.GetUser(string Username)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        UserPoco IUserRepo.GetUserById(string Id)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

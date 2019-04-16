@@ -21,7 +21,7 @@ namespace IdentitySvr.Entities.Mappers
 
                 Name = poco.Name,
 
-                ApiSecrets = { new Secret(poco.ApiSecrets.Sha512()) },
+                ApiSecrets = {new Secret((poco.ApiSecrets).Sha256())},
 
                 Description = poco.Description,
 

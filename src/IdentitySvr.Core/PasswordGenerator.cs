@@ -16,7 +16,7 @@ namespace IdentitySvr.Core
         public static string CreateNew(string password, string salt="")
         {
             var StrToHash = password + salt;
-            var result = new Secret((StrToHash).ToSha512());
+            var result = new Secret((StrToHash).ToSha256());
             return result.Value;
         }
 
