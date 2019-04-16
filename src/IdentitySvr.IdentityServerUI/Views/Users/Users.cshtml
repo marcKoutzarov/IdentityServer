@@ -1,4 +1,6 @@
-﻿@{
+﻿
+@model IEnumerable<IdentitySvr.Entities.Pocos.UserPoco>
+@{
     ViewData["Title"] = "Users";
 }
 <h3>@ViewData["Title"]</h3>
@@ -21,8 +23,42 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Users">Search</a>
                     </li>
-                 </ul>
+                </ul>
             </div>
         </div>
     </nav>
 </header>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.SubjectId)</th>
+            <th>@Html.DisplayNameFor(model => model.Username)</th>
+            <th>@Html.DisplayNameFor(model => model.Salt)</th>
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.Role)</th>
+            <th>@Html.DisplayNameFor(model => model.AllowedClients)</th>
+            <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+            <th></th>
+        </tr>
+    </thead>
+   
+    <tbody>
+     
+        
+        
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.SubjectId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Username)</td>
+            <td>@Html.DisplayFor(modelItem => item.Salt)</td>
+            <td>*****</td>
+            <td>@Html.DisplayFor(modelItem => item.Role)</td>
+            <td>@Html.DisplayFor(modelItem => item.AllowedClients)</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+        </tr>
+        }
+    
+    </tbody>
+</table>

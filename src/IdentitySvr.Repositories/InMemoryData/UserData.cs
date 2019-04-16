@@ -33,13 +33,13 @@ namespace IdentitySvr.Repositories.InMemoryData
                     Password =PasswordGenerator.CreateNew("password","1111"),
                     Salt ="1111",
                     Email ="bob@email.com",
-                    GivenName ="bob",
+                    GivenName ="Bob",
                     FamilyName ="the Builder",
                     IsActive =true,
                     ProviderName ="" ,
                     ProviderSubjectId ="",
-                    Role ="Rolebob",
-                    AllowedClients="Client1;client2",
+                    Role ="admin",
+                    AllowedClients="Client1;Client2",
                     DateCreated=new DateTime().Date,
                     DateUpdated=new DateTime().Date,
                     CreatedBy ="test",
@@ -49,21 +49,41 @@ namespace IdentitySvr.Repositories.InMemoryData
                    new UserPoco{
                     SubjectId="2",
                     Username="alice",
-                    Password = PasswordGenerator.CreateNew("password","1111"),
-                    Salt ="1111",
+                    Password = PasswordGenerator.CreateNew("password","5555"),
+                    Salt ="5555",
                     Email ="alice@email.com",
-                    GivenName ="alice",
+                    GivenName ="Alice",
                     FamilyName ="Wonderland",
                     IsActive =true,
                     ProviderName ="" ,
                     ProviderSubjectId ="",
-                    Role ="roleAlice",
-                    AllowedClients="Client1;client2",
+                    Role ="employee",
+                    AllowedClients="Client1;Client3",
                     DateCreated=new DateTime().Date,
                     DateUpdated=new DateTime().Date,
                     CreatedBy ="test",
                     UpdatedBy ="test"
-                }};
+                  },
+                   new UserPoco{
+                    SubjectId="3",
+                    Username="george",
+                    Password = PasswordGenerator.CreateNew("password","6666"),
+                    Salt ="6666",
+                    Email ="george@email.com",
+                    GivenName ="George",
+                    FamilyName ="Jonhson",
+                    IsActive =true,
+                    ProviderName ="" ,
+                    ProviderSubjectId ="",
+                    Role ="customer",
+                    AllowedClients="Client1;Client2;Client3",
+                    DateCreated=new DateTime().Date,
+                    DateUpdated=new DateTime().Date,
+                    CreatedBy ="test",
+                    UpdatedBy ="test"
+                }
+
+            };
         }
     }
 }

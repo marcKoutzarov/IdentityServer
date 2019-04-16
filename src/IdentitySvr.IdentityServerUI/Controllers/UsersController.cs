@@ -13,7 +13,9 @@ namespace IdentitySvr.IdentityServerUI.Controllers
 
         public IActionResult Users()
         {
-            return View();
+            var repo = new IdentitySvr.Repositories.UserRepo();
+            var users = repo.GetUsersAsync().Result;
+            return View(users);
         }
 
 
