@@ -24,6 +24,8 @@ namespace IdentitySvr.IdentityServerUI.Models
 
         public string ReferenceToken { get; set; } = "";
 
-        public string ClaimsToken { get; set; } = "";
+        public string ClaimsToken { get; set; } = "";  
+
+
     }
 }
