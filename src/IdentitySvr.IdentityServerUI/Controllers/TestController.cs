@@ -22,42 +22,84 @@ namespace IdentitySvr.IdentityServerUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GetRefTokenAsync()
+        public async Task<IActionResult> GetRefTokenAsync(IdentityCredentialsModel model)
         {
-            ReferenceTokenModel result = new ReferenceTokenModel();
+           
 
-            IDiscoveryCache _discoCache = new DiscoveryCache("https://localhost:5001");
+            IDiscoveryCache _discoCache = new DiscoveryCache(model.IdentityServer);
             var disco = await _discoCache.GetAsync();
 
             if (disco.IsError) {
                 // throw new Exception(disco.Error);
-                result.Result = disco.Error;
+                model.ReferenceToken  = disco.Error;
 
-                return View(result);
+                return View("ReferenceToken", model);
             };
 
             var client = new HttpClient();
             var response = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
             {
                 Address = disco.TokenEndpoint,
-
-                ClientId = "Client1",
-                ClientSecret = "Client1Secret",
-                UserName = "bob",
-                Password = "password"
+                ClientId = model.ClientUserName,
+                ClientSecret = model.ClientSecret,
+                UserName = model.UserUserName,
+                Password =model.UserSecret
             });
 
             if (response.IsError)
             {
-                result.Result = response.Json.ToString();
+                model.ReferenceToken = response.Json.ToString();
             }
             else
             {
-                result.Result = response.Json.ToString();
+                model.ReferenceToken = response.Json.ToString();
             }
 
-            return View(result);
+            return View("ReferenceToken", model);
         }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> GetClaimsTokenAsync(IdentityCredentialsModel model)
+        {
+
+            IDiscoveryCache _discoCache = new DiscoveryCache(model.IdentityServer);
+
+            var disco = await _discoCache.GetAsync();
+
+            if (disco.IsError)
+            {
+                // throw new Exception(disco.Error);
+                model.ClaimsToken = disco.Error;
+                return View("ReferenceToken", model);
+            };
+
+            var client = new HttpClient();
+
+            var response = await client.IntrospectTokenAsync(new TokenIntrospectionRequest
+            {
+                Address = disco.IntrospectionEndpoint,
+                ClientId = model.ApiUserName,
+                ClientSecret = model.ApiSecret, //"Api3Secret",
+                Token = model.ReferenceToken
+            });
+
+           if (response.IsError)
+            {
+                model.ClaimsToken = response.Json.ToString();
+            }
+            else
+            {
+                model.ClaimsToken = response.Json.ToString();
+            }
+
+            return View("ReferenceToken", model);
+        }
+
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
