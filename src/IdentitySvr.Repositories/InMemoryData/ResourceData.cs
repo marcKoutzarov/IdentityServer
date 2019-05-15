@@ -47,7 +47,7 @@ namespace IdentitySvr.Repositories.InMemoryData
                     Id=1,
                     ClientUserName ="Client1",
                     Secret ="Client1Secret",
-                    AccessTokenLifeTime =300,
+                    AccessTokenLifeTime =20,
                     AccessTokenType ="REF",
                     Description ="Description of Client 1",
                     Enabled =true,

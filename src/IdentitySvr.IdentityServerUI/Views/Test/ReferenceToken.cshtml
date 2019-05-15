@@ -1,0 +1,78 @@
+﻿
+@model IdentityCredentialsModel
+
+@{
+    ViewData["Title"] = "Reference token response (security token)";
+}
+
+
+<table width="90%">
+    <tr>
+
+        <td width="45%">
+            <div class="text-left">
+                <p>Security reference token.</p>
+            </div>
+            <div class="form-group shadow-textarea">
+                <label for="exampleFormControlTextarea6">Token response: </label>
+                <textarea class="form-control z-depth-1" id="txtResult" rows="3" placeholder="">@Html.DisplayFor(model => model.ReferenceToken)</textarea>
+            </div>
+
+        </td>
+
+        <td width="45%">
+
+            <div class="text-left">
+                <p>Claims</p>
+            </div>
+            <div class="form-group shadow-textarea">
+                <label for="exampleFormControlTextarea6">Token response: </label>
+                <textarea class="form-control z-depth-1" id="txtResult" rows="3" placeholder="">@Html.DisplayFor(model => model.ClaimsToken)</textarea>
+            </div>
+
+
+
+        </td>
+
+    </tr>
+
+    </table>
+
+
+
+
+
+<div class="text-left">
+    <p>Swap Reference token for a Claims token</p>
+</div>
+
+
+<form asp-action="GetClaimsTokenAsync" asp-controller="test">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Server</label><br />
+        <input type="text" asp-for="IdentityServer" id="IdentityServer" name="IdentityServer" value="https://localhost:5001">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Reference token</label><br />
+        <input type="text" asp-for="ReferenceToken" id="ReferenceToken" name="ReferenceToken" value="">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Api name</label><br />
+        <input type="text" asp-for="ApiUserName" id="ApiUserName" name="ApiUserName" value="api2">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Api Secret (use Api2Secret)</label><br />
+        <input type="password" asp-for="ApiSecret" id="ApiSecret" name="ApiSecret" value="Api2Secret">
+    </div>
+
+    <div class="form-group">
+        <button type="submit">Send</button>
+    </div>
+</form>
+
+
+
+
+
