@@ -1,7 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IdentityCredentialsModel
+
+
+@{
+    ViewData["Title"] = "Test Reference toke";
 }
 
 <div class="text-center">
-    <p>Test Authentication</p>
+    <p>Request a reference token</p>
 </div>
+
+<form asp-action="GetRefTokenAsync" asp-controller="test">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Server</label><br />
+        <input type="text"  asp-for="IdentityServer"  id="IdentityServer" name="IdentityServer" value="https://localhost:5001">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Client username</label><br />
+        <input type="text"  asp-for="ClientUserName"  id="ClientUserName" name="ClientUserName" value="Client1">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Client Secret (use Client1Secret)</label><br />
+        <input type="password"  asp-for="ClientSecret"  id="ClientSecret" name="ClientSecret" value="Client1Secret">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Username</label><br />
+        <input type="text"  asp-for="UserUserName"  id="UserUserName" name="UserUserName" value="bob">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Password (use password)</label><br />
+        <input type="password" asp-for="UserSecret"   id="UserSecret" name="UserSecret" value="password">
+    </div>
+    <div class="form-group">
+
+        <button type="submit">Send</button>
+    </div>
+
+
+</form>
